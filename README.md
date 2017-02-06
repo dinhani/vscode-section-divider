@@ -2,14 +2,14 @@
 
 This extension inserts horizontal section dividers using language comments.
 
-![Section Divider example](https://raw.githubusercontent.com/dinhani/ext-section-divider/master/vscode/images/vscode-divider-example.gif)
+![Section Divider example](https://raw.githubusercontent.com/dinhani/vscode-section-divider/master/images/vscode-divider-example.gif)
 
 # Usage
 
 | Command | Shortcut | Description |
-|-|-|-|
-| Divider: Add From Cursor| Alt+D | insert a divider from cursor position up to the configured end column|
-| Divider: Add From Line Start | | insert a divider from the start of the line up to the configued end column|
+|---------|----------|-------------|
+| Divider: Add From Cursor| Alt+D  | insert a divider from cursor position up to the configured end column |
+| Divider: Add From Line Start | | insert a divider from the start of the line up to the configued end column |
 
 # Configuration
 
@@ -26,4 +26,4 @@ This extension inserts horizontal section dividers using language comments.
 
 # Feedback
 
-Request features and report bugs using [GitHub](https://github.com/dinhani/ext-section-divider).
+Request features and report bugs using [GitHub](https://github.com/dinhani/vscode-section-divider).

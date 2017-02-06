@@ -3,10 +3,10 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "license": "MIT",
-    "repository": "https://github.com/dinhani/ext-section-divider",
-    "bugs": "https://github.com/dinhani/ext-section-divider/issues",
+    "repository": "https://github.com/dinhani/vscode-section-divider",
+    "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
     "icon": "images/vscode-divider-icon.png",
     "engines": {
         "vscode": "^1.5.0"
