@@ -1,0 +1,17 @@
+sudo: false
+
+language: node_js
+node_js:
+- "6"
+
+os:
+- linux
+
+before_install:
+- npm install -g typescript
+- npm install -g vsce
+
+install:
+- npm install
+- npm run vscode:prepublish
+- vsce package

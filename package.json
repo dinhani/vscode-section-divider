@@ -1,0 +1,75 @@
+{
+    "name": "divider",
+    "displayName": "Section Divider",
+    "description": "Inserts horizontal section dividers using language comments.",
+    "publisher": "dinhani",
+    "version": "0.0.14",
+    "license": "MIT",
+    "repository": "https://github.com/dinhani/ext-section-divider",
+    "bugs": "https://github.com/dinhani/ext-section-divider/issues",
+    "icon": "images/vscode-divider-icon.png",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "activationEvents": [
+        "onCommand:divider.addFromCursor",
+        "onCommand:divider.addFromLineStart"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "divider.addFromCursor",
+                "title": "Divider: Add From Cursor"
+            },
+            {
+                "command": "divider.addFromLineStart",
+                "title": "Divider: Add From Line Start"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "divider.addFromCursor",
+                "key": "alt+d",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Section Divider extension",
+            "properties": {
+                "divider.text": {
+                    "type": "string",
+                    "default": "=",
+                    "description": "Text that will be used to fill the section divider lines."
+                },
+                "divider.endColumn": {
+                    "type": "number",
+                    "default": 80,
+                    "description": "Last character column the section divider will reach."
+                },
+                "divider.lines": {
+                    "type": "number",
+                    "default": 3,
+                    "description": "Number of lines the section divider will have."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
