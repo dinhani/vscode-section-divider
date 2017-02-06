@@ -1,5 +1,7 @@
 # Change Log
 
+**1.0.0:** First stable release
+
 **0.0.10:** Added shortcut (Alt+D) to "Divider: Add From Cursor"
 
 **0.0.9:** Fixed a off-by-one error when generating the divider
