@@ -10,7 +10,7 @@ export abstract class BlockRenderer {
 
     // INTERFACE
     abstract render(): string;
-    abstract getRelativeLineToSetCursor(): number;
+    abstract getLineToSerCursor(): number;
 
     protected configureRenderer(renderer: LineRenderer) {
         renderer.documentLanguage = this.documentLanguage;
@@ -22,8 +22,8 @@ export abstract class BlockRenderer {
 
 export class SingleLineBlockRenderer extends BlockRenderer {
     // METADATA
-    getRelativeLineToSetCursor(): number {
-        return -1;
+    getLineToSerCursor(): number {
+        return 2;
     }
 
     // RENDER
@@ -39,8 +39,8 @@ export class SingleLineBlockRenderer extends BlockRenderer {
 
 export class TwoLineBlockRenderer extends BlockRenderer {
     // METADATA
-    getRelativeLineToSetCursor(): number {
-        return -1;
+    getLineToSerCursor(): number {
+        return 3;
     }
 
     // RENDER
@@ -62,8 +62,8 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
     lines: number = 3;
 
     // METADATA
-    getRelativeLineToSetCursor(): number {
-        return 1;
+    getLineToSerCursor(): number {
+        return 2;
     }
 
     // RENDER

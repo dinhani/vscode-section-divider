@@ -15,9 +15,9 @@ export class DividerRenderer {
     // =========================================================================
     // GETTERS
     // =========================================================================
-    getRelativeLineToSetCursor(): number {
+    getLineToSerCursor(): number {
         let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines);
-        return blockRenderer.getRelativeLineToSetCursor();
+        return blockRenderer.getLineToSerCursor();
     }
 
     // =========================================================================

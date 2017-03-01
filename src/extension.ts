@@ -46,6 +46,9 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
 }
 
+// =============================================================================
+// INSERT DIVIDER ENTRY POINT
+// =============================================================================
 function insertDivider(selection: vscode.Selection, numberOfLines?: number) {
     // read config
     let config = vscode.workspace.getConfiguration("divider");
@@ -57,7 +60,7 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number) {
         configNumberOfLines = numberOfLines;
     }
 
-    // configure renderer
+    // configure divider renderer
     let renderer = new DividerRenderer();
     renderer.documentLanguage = language;
     renderer.dividerNumberOfLines = configNumberOfLines;
@@ -65,21 +68,19 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number) {
     renderer.dividerEndColumn = configEndColumn;
     renderer.dividerText = configText;
 
-    // render
+    // render divider
     let divider = renderer.render();
 
-    // insert
+    // insert divider
     let editor = vscode.window.activeTextEditor;
     editor.edit((editor) => { editor.replace(selection, divider); });
 
-    // position cursor if necessary
-    if (renderer.getRelativeLineToSetCursor() >= 0) {
-        // generate the selection to set cursor
-        let lineToSetCursor = selection.start.line + renderer.getRelativeLineToSetCursor();
-        let positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + CommentRendererFactory.create(language).startCommentText.length + 1);
-        let selectionToSetCursor = new vscode.Selection(positionToSetCursor, positionToSetCursor);
-
-        // set the cursor
-        vscode.window.activeTextEditor.selection = selectionToSetCursor;
+    // position the cursor inside or after the divider
+    let lineToSetCursor = selection.start.line + (renderer.getLineToSerCursor() - 1);
+    let positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character);
+    if (configNumberOfLines >= 3) {
+        positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + CommentRendererFactory.create(language).startCommentText.length + 1);
     }
+    let selectionToSetCursor = new vscode.Selection(positionToSetCursor, positionToSetCursor);
+    vscode.window.activeTextEditor.selection = selectionToSetCursor;
 }
