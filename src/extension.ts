@@ -10,6 +10,7 @@ import { CommentRendererFactory } from './renderers/commentRenderers';
 // ============================================================================
 export function activate(context: vscode.ExtensionContext) {
 
+    // FROM CURSOR
     let fromCursor = vscode.commands.registerCommand('divider.addFromCursor', () => {
         // prepare selection
         let currentSelection = vscode.window.activeTextEditor.selection;
@@ -19,6 +20,17 @@ export function activate(context: vscode.ExtensionContext) {
     });
     context.subscriptions.push(fromCursor);
 
+    // FROM CURSOR WITH ONE LINE
+    let fromCursorWithOneLine = vscode.commands.registerCommand('divider.addFromCursorWithOneLine', () => {
+        // prepare selection
+        let currentSelection = vscode.window.activeTextEditor.selection;
+
+        // insert
+        insertDivider(currentSelection, 1);
+    });
+    context.subscriptions.push(fromCursor);
+
+    // FROM LINE START
     let fromLineStart = vscode.commands.registerCommand('divider.addFromLineStart', () => {
         // prepare selection
         let currentSelection = vscode.window.activeTextEditor.selection;
@@ -34,13 +46,16 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
 }
 
-function insertDivider(selection: vscode.Selection) {
+function insertDivider(selection: vscode.Selection, numberOfLines?: number) {
     // read config
     let config = vscode.workspace.getConfiguration("divider");
     let configNumberOfLines = config.get("lines", 3);
     let configEndColumn = config.get("endColumn", 80);
     let configText = config.get("text", "=");
     let language = vscode.window.activeTextEditor.document.languageId;
+    if (numberOfLines) {
+        configNumberOfLines = numberOfLines;
+    }
 
     // configure renderer
     let renderer = new DividerRenderer();

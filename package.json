@@ -16,6 +16,7 @@
     ],
     "activationEvents": [
         "onCommand:divider.addFromCursor",
+        "onCommand:divider.addFromCursorWithOneLine",
         "onCommand:divider.addFromLineStart"
     ],
     "main": "./out/src/extension",
@@ -26,6 +27,10 @@
                 "title": "Divider: Add From Cursor"
             },
             {
+                "command": "divider.addFromCursorWithOneLine",
+                "title": "Divider: Add From Cursor One Line"
+            },
+            {
                 "command": "divider.addFromLineStart",
                 "title": "Divider: Add From Line Start"
             }
@@ -34,6 +39,11 @@
             {
                 "command": "divider.addFromCursor",
                 "key": "alt+d",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "divider.addFromCursorWithOneLine",
+                "key": "ctrl+alt+d",
                 "when": "editorTextFocus"
             }
         ],
