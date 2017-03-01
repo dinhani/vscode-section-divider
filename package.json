@@ -3,7 +3,7 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "repository": "https://github.com/dinhani/vscode-section-divider",
     "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
@@ -28,7 +28,7 @@
             },
             {
                 "command": "divider.addFromCursorWithOneLine",
-                "title": "Divider: Add From Cursor One Line"
+                "title": "Divider: Add From Cursor With One Line"
             },
             {
                 "command": "divider.addFromLineStart",

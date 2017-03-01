@@ -8,8 +8,9 @@ This extension inserts horizontal section dividers using language comments.
 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
-| Divider: Add From Cursor| Alt+D | insert a divider from cursor position up to the configured end column|
-| Divider: Add From Line Start | | insert a divider from the start of the line up to the configued end column|
+| Divider: Add From Cursor| Alt+D | insert a divider with the configured number of lines from cursor position up to the configured end column|
+| Divider: Add From Cursor With One Line| Ctrl+Alt+D | insert a divider with a single line from cursor position up to the configured end column|
+| Divider: Add From Line Start | | insert a divider from the start of the line with the configured number of lines up to the configued end column|
 
 # Configuration
 

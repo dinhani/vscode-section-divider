@@ -1,6 +1,10 @@
 # Change Log
 
+**1.1.0:** Added `Divider: Add From Cursor With One Line` and fixed cursor position after divider is inserted
+
 **1.0.0:** First stable release
+
+---
 
 **0.0.10:** Added shortcut (Alt+D) to "Divider: Add From Cursor"
 
