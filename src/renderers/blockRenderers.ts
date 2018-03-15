@@ -3,27 +3,19 @@ import { EmptyLineRenderer, FullLineRenderer, LineRenderer } from "./lineRendere
 
 export abstract class BlockRenderer {
 
-    // DATA
-    dividerStartColumn: number = 0;
-    dividerEndColumn: number = 80;
-    dividerText: string = "=";
-
-    protected readonly commentRenderer: CommentRenderer;
+    // SERVICES
+    protected readonly emptyLineRenderer: EmptyLineRenderer;
+    protected readonly fullLineRenderer: FullLineRenderer;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer){
-        this.commentRenderer = commentRenderer;
+    constructor(commentRenderer: CommentRenderer, dividerStartColumn: number, dividerEndColumn: number, dividerText: string){
+        this.emptyLineRenderer = new EmptyLineRenderer(commentRenderer);
+        this.fullLineRenderer = new FullLineRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
     }
 
     // INTERFACE
     abstract render(): string;
     abstract getLineToSerCursor(): number;
-
-    protected configureRenderer(renderer: LineRenderer): void {
-        renderer.dividerStartColumn = this.dividerStartColumn;
-        renderer.dividerEndColumn = this.dividerEndColumn;
-        renderer.dividerText = this.dividerText;
-    }
 }
 
 export class SingleLineBlockRenderer extends BlockRenderer {
@@ -34,12 +26,7 @@ export class SingleLineBlockRenderer extends BlockRenderer {
 
     // RENDER
     render(): string {
-        // prepare
-        let dividerRenderer = new FullLineRenderer(this.commentRenderer);
-        this.configureRenderer(dividerRenderer);
-
-        // render
-        return dividerRenderer.render();
+        return this.fullLineRenderer.render();
     }
 }
 
@@ -51,13 +38,8 @@ export class TwoLineBlockRenderer extends BlockRenderer {
 
     // RENDER
     render(): string {
-        // prepare
-        let dividerRenderer = new FullLineRenderer(this.commentRenderer);
-        this.configureRenderer(dividerRenderer);
-
-        // render
-        let block = `${dividerRenderer.render()}\n`;
-        block += dividerRenderer.render();
+        let block = `${this.fullLineRenderer.render()}\n`;
+        block += this.fullLineRenderer.render();
 
         return block;
     }
@@ -74,20 +56,12 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 
     // RENDER
     render(): string {
-        // prepare
-        let dividerRenderer = new FullLineRenderer(this.commentRenderer);
-        this.configureRenderer(dividerRenderer);
-
-        let emptyRenderer = new EmptyLineRenderer(this.commentRenderer);
-        this.configureRenderer(emptyRenderer);
-
-        // render
         let emptyLines = this.lines - 2;
-        let block = `${dividerRenderer.render()}\n`;
+        let block = `${this.fullLineRenderer.render()}\n`;
         for (let emptyLine = 0; emptyLine < emptyLines; emptyLine++) {
-            block += `${emptyRenderer.render()}\n`;
+            block += `${this.emptyLineRenderer.render()}\n`;
         }
-        block += dividerRenderer.render();
+        block += this.fullLineRenderer.render();
 
         return block;
     }
@@ -98,14 +72,14 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 // =============================================================================
 export class BlockRendererFactory {
 
-    static create(numberOfLines: number, commentRenderer: CommentRenderer): BlockRenderer {
+    static create(numberOfLines: number, commentRenderer: CommentRenderer, dividerStartColumn: number, dividerEndColumn: number, dividerText: string): BlockRenderer {
         let renderer = null;
         if (numberOfLines <= 1) {
-            renderer = new SingleLineBlockRenderer(commentRenderer);
+            renderer = new SingleLineBlockRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
         } else if (numberOfLines === 2) {
-            renderer = new TwoLineBlockRenderer(commentRenderer);
+            renderer = new TwoLineBlockRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
         } else {
-            renderer = new MultipleLineBlockRenderer(commentRenderer);
+            renderer = new MultipleLineBlockRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
             renderer.lines = numberOfLines;
         }
         return renderer;
