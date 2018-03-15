@@ -18,8 +18,7 @@ suite("Block Renderers", () => {
         assert.equal(comment.length, 161);
     });
     test("MultipleLineBlockRenderer render", () => {
-        let renderer = new MultipleLineBlockRenderer(commentRenderer);
-        renderer.lines = 3;
+        let renderer = new MultipleLineBlockRenderer(commentRenderer, 3);
 
         let comment = renderer.render(0, 80, "=");
         assert.equal(comment, "// =============================================================================\n// \n// =============================================================================");

@@ -14,7 +14,7 @@ suite("Line Renderers", () => {
     });
     test("BlockCommentRenderer render", () => {
         let emptyLineRenderer = new EmptyLineRenderer(commentRenderer);
-        let comment = emptyLineRenderer.render();
+        let comment = emptyLineRenderer.render(0, 80, "=");
         assert.equal(comment, "// ");
         assert.equal(comment.length, 3);
     });
