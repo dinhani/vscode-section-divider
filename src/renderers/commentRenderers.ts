@@ -1,16 +1,23 @@
 export abstract class CommentRenderer {
-    // DATA
-    startCommentText: string;
 
+    // DATA
+    readonly startCommentText: string;
+
+    // CONSTRUCTOR
+    constructor(startCommentText: string) {
+        this.startCommentText = startCommentText;
+    }
+
+    // ABSTRACT
     abstract render(text: string): string;
     abstract getMinimumSize(): number;
 }
 
 export class LineCommentRenderer extends CommentRenderer {
+
     // CONSTRUCTOR
     constructor(startCommentText: string) {
-        super();
-        this.startCommentText = startCommentText;
+        super(startCommentText);
     }
 
     // METADATA
@@ -25,13 +32,13 @@ export class LineCommentRenderer extends CommentRenderer {
 }
 
 export class BlockCommentRenderer extends CommentRenderer {
+
     // DATA
-    endCommentText: string;
+    readonly endCommentText: string;
 
     // CONSTRUCTOR
     constructor(startCommentText: string, endCommentText: string) {
-        super();
-        this.startCommentText = startCommentText;
+        super(startCommentText);
         this.endCommentText = endCommentText;
     }
 
