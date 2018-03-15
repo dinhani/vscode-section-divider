@@ -47,7 +47,13 @@ export class TwoLineBlockRenderer extends BlockRenderer {
 
 export class MultipleLineBlockRenderer extends BlockRenderer {
     // DATA
-    lines: number = 3;
+    readonly lines: number;
+
+    // CONSTRUCTOR
+    constructor(commentRenderer: CommentRenderer, lines: number){
+        super(commentRenderer);
+        this.lines = lines;
+    }
 
     // METADATA
     getLineToSerCursor(): number {
@@ -59,7 +65,7 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
         let emptyLines = this.lines - 2;
         let block = `${this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText)}\n`;
         for (let emptyLine = 0; emptyLine < emptyLines; emptyLine++) {
-            block += `${this.emptyLineRenderer.render()}\n`;
+            block += `${this.emptyLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText)}\n`;
         }
         block += this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
 
@@ -79,8 +85,7 @@ export class BlockRendererFactory {
         } else if (numberOfLines === 2) {
             renderer = new TwoLineBlockRenderer(commentRenderer);
         } else {
-            renderer = new MultipleLineBlockRenderer(commentRenderer);
-            renderer.lines = numberOfLines;
+            renderer = new MultipleLineBlockRenderer(commentRenderer, numberOfLines);
         }
         return renderer;
     }

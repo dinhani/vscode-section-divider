@@ -1,13 +1,24 @@
 import { CommentRenderer } from "./commentRenderers";
 
-export class FullLineRenderer {
+export abstract class LineRenderer {
 
     // SERVICES
-    private readonly commentRenderer: CommentRenderer;
+    protected readonly commentRenderer: CommentRenderer;
 
     // CONSTRUCTOR
     constructor(commentRenderer: CommentRenderer) {
         this.commentRenderer = commentRenderer;
+    }
+
+    // ABSTRACT
+    abstract render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string;
+}
+
+export class FullLineRenderer extends LineRenderer {
+
+    // CONSTRUCTOR
+    constructor(commentRenderer: CommentRenderer) {
+        super(commentRenderer);
     }
 
     // RENDER
@@ -19,18 +30,15 @@ export class FullLineRenderer {
     }
 }
 
-export class EmptyLineRenderer {
-
-    // SERVICES
-    private commentRenderer: CommentRenderer;
+export class EmptyLineRenderer extends LineRenderer {
 
     // CONSTRUCTOR
     constructor(commentRenderer: CommentRenderer) {
-        this.commentRenderer = commentRenderer;
+        super(commentRenderer);
     }
 
     // RENDER
-    render(): string {
+    render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
         return this.commentRenderer.render("");
     }
 }
