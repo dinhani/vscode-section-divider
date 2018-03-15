@@ -1,7 +1,7 @@
-var testRunner = require('vscode/lib/testrunner');
+var testRunner = require("vscode/lib/testrunner");
 
 testRunner.configure({
-    ui: 'tdd',
+    ui: "tdd",
     useColors: true
 });
 

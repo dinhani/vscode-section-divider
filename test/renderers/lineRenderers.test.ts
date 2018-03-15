@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { DividerLineRenderer, EmptyLineRenderer } from '../../src/renderers/lineRenderers'
+import * as assert from "assert";
+import { DividerLineRenderer, EmptyLineRenderer } from "../../src/renderers/lineRenderers";
 
 suite("Line Renderers", () => {
     test("LineCommentRenderer render", () => {
