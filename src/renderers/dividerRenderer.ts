@@ -1,10 +1,10 @@
-import { BlockRendererFactory, BlockRenderer } from "./blockRenderers";
+import { BlockRenderer, BlockRendererFactory } from "./blockRenderers";
 
 export class DividerRenderer {
 
     // DOCUMENT DATA
     documentLanguage: string = "";
-    documentLineBreak = "\n";
+    documentLineBreak: string = "\n";
 
     // DIVIDER DATA
     dividerNumberOfLines: number = 3;

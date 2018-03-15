@@ -1,4 +1,4 @@
-import { LineRenderer, DividerLineRenderer, EmptyLineRenderer } from "./lineRenderers";
+import { DividerLineRenderer, EmptyLineRenderer, LineRenderer } from "./lineRenderers";
 
 export abstract class BlockRenderer {
 

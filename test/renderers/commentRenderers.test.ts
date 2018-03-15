@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { CommentRendererFactory, LineCommentRenderer, BlockCommentRenderer } from "../../src/renderers/commentRenderers";
+import { BlockCommentRenderer, CommentRendererFactory, LineCommentRenderer } from "../../src/renderers/commentRenderers";
 
 suite("Comment Renderers", () => {
     test("LineCommentRenderer render", () => {
