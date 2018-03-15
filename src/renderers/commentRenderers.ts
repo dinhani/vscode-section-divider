@@ -72,16 +72,25 @@ export class CommentRendererFactory {
             case "php":
             case "rust":
             case "scala":
+            case "stylus":
             case "swift":
             case "typescript":
                 return new LineCommentRenderer("//");
+            // //-
+            case "jade":
+            case "pug":
+                return new LineCommentRenderer("//-");
             // #
             case "coffeescript":
             case "crystal":
+            case "dockerfile":
             case "elixir":
+            case "graphql":
             case "julia":
+            case "makefile":
             case "perl":
             case "perl6":
+            case "powershell":
             case "properties":
             case "python":
             case "r":
@@ -89,6 +98,7 @@ export class CommentRendererFactory {
             case "yaml":
                 return new LineCommentRenderer("#");
             // --
+            case "ada":
             case "elm":
             case "haskell":
             case "lua":
@@ -113,6 +123,15 @@ export class CommentRendererFactory {
             // \
             case "forth":
                 return new LineCommentRenderer("\\");
+            // *
+            case "abap":
+            case "cobol":
+            case "sas":
+            case "spss":
+            case "stata":
+                return new LineCommentRenderer("*");
+            case "bat":
+                return new LineCommentRenderer("REM");
             // /* */
             case "css":
             case "less":
@@ -122,6 +141,7 @@ export class CommentRendererFactory {
             case "coldfusion":
             case "markdown":
             case "html":
+            case "xsl":
             case "xml":
                 return new BlockCommentRenderer("<!--", "-->");
             case "mathematica":

@@ -3,7 +3,7 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "license": "MIT",
     "repository": "https://github.com/dinhani/vscode-section-divider",
     "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
@@ -81,7 +81,7 @@
         "mocha": "^2.3.3",
         "tslint": "^5.9.1",
         "tslint-microsoft-contrib": "^5.0.3",
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0"
+        "typescript": "2.7.2",
+        "vscode": "1.1.13"
     }
 }
