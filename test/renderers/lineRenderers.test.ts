@@ -7,7 +7,7 @@ suite("Line Renderers", () => {
     let commentRenderer = new LineCommentRenderer("//");
 
     test("LineCommentRenderer render", () => {
-        let fullLineRenderer = new FullLineRenderer(commentRenderer);
+        let fullLineRenderer = new FullLineRenderer(commentRenderer, 0, 80, "=");
         let comment = fullLineRenderer.render();
         assert.equal(comment, "// =============================================================================");
         assert.equal(comment.length, 80);

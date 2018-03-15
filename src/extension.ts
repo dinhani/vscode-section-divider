@@ -61,11 +61,7 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
 
     // configure divider renderer
     let commentRenderer = CommentRendererFactory.create(language);
-    let renderer = new DividerRenderer(commentRenderer);
-    renderer.dividerNumberOfLines = configNumberOfLines;
-    renderer.dividerStartColumn = selection.start.character;
-    renderer.dividerEndColumn = configEndColumn;
-    renderer.dividerText = configText;
+    let renderer = new DividerRenderer(commentRenderer, configNumberOfLines, selection.start.character, configEndColumn, configText);
 
     // render divider
     let divider = renderer.render();

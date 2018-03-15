@@ -3,42 +3,31 @@ import { CommentRenderer } from "./commentRenderers";
 
 export class DividerRenderer {
 
-    // DOCUMENT DATA
-    documentLineBreak: string = "\n";
+    // SERVICES
+    private readonly blockRenderer: BlockRenderer;
 
-    // DIVIDER DATA
-    dividerNumberOfLines: number = 3;
-    dividerStartColumn: number = 0;
-    dividerEndColumn: number = 80;
-    dividerText: string = "=";
-
-    private readonly commentRenderer: CommentRenderer;
+    // DATA
+    private dividerStartColumn: number;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer){
-        this.commentRenderer = commentRenderer;
+    constructor(commentRenderer: CommentRenderer, numberOfLines: number, dividerStartColumn: number, dividerEndColumn: number, dividerText: string){
+        this.dividerStartColumn = dividerStartColumn;
+        this.blockRenderer = BlockRendererFactory.create(numberOfLines, commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
     }
 
     // =========================================================================
     // GETTERS
     // =========================================================================
     getLineToSerCursor(): number {
-        let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines, this.commentRenderer);
-        return blockRenderer.getLineToSerCursor();
+        return this.blockRenderer.getLineToSerCursor();
     }
 
     // =========================================================================
     // RENDER
     // =========================================================================
     render(): string {
-        // configure block renderer
-        let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines, this.commentRenderer);
-        blockRenderer.dividerStartColumn = this.dividerStartColumn;
-        blockRenderer.dividerEndColumn = this.dividerEndColumn;
-        blockRenderer.dividerText = this.dividerText;
-
         // render divider
-        let divider = blockRenderer.render();
+        let divider = this.blockRenderer.render();
 
         // add necessary identation to the left
         let dividerWithIdentation = this.addIdentationSpace(divider);
@@ -67,7 +56,7 @@ export class DividerRenderer {
 
             // append line-break if not last line
             if (index !== lines.length - 1) {
-                dividerWithIdentation += this.documentLineBreak;
+                dividerWithIdentation += "\n";
             }
         }
         return dividerWithIdentation;

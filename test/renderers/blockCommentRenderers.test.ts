@@ -6,19 +6,19 @@ suite("Block Renderers", () => {
     let commentRenderer = new LineCommentRenderer("//");
 
     test("SingleLineBlockRenderer render", () => {
-        let renderer = new SingleLineBlockRenderer(commentRenderer);
+        let renderer = new SingleLineBlockRenderer(commentRenderer, 0, 80, "=");
         let comment = renderer.render();
         assert.equal(comment, "// =============================================================================");
         assert.equal(comment.length, 80);
     });
     test("TwoLineBlockRenderer render", () => {
-        let renderer = new TwoLineBlockRenderer(commentRenderer);
+        let renderer = new TwoLineBlockRenderer(commentRenderer, 0,  80, "=");
         let comment = renderer.render();
         assert.equal(comment, "// =============================================================================\n// =============================================================================");
         assert.equal(comment.length, 161);
     });
     test("MultipleLineBlockRenderer render", () => {
-        let renderer = new MultipleLineBlockRenderer(commentRenderer);
+        let renderer = new MultipleLineBlockRenderer(commentRenderer, 0, 80, "=");
         renderer.lines = 3;
 
         let comment = renderer.render();
@@ -26,10 +26,7 @@ suite("Block Renderers", () => {
         assert.equal(comment.length, 165);
     });
     test("SingleLineBlockRenderer configure", () => {
-        let renderer = new SingleLineBlockRenderer(commentRenderer);
-        renderer.dividerStartColumn = 10;
-        renderer.dividerEndColumn = 60;
-        renderer.dividerText = "#";
+        let renderer = new SingleLineBlockRenderer(commentRenderer, 10, 60, "#");
         let comment = renderer.render();
         assert.equal(comment, "// ###############################################");
         assert.equal(comment.length, 50);
