@@ -1,19 +1,25 @@
-import { DividerLineRenderer, EmptyLineRenderer, LineRenderer } from "./lineRenderers";
+import { CommentRenderer } from "./commentRenderers";
+import { EmptyLineRenderer, FullLineRenderer, LineRenderer } from "./lineRenderers";
 
 export abstract class BlockRenderer {
 
     // DATA
-    documentLanguage: string = "";
     dividerStartColumn: number = 0;
     dividerEndColumn: number = 80;
     dividerText: string = "=";
+
+    protected readonly commentRenderer: CommentRenderer;
+
+    // CONSTRUCTOR
+    constructor(commentRenderer: CommentRenderer){
+        this.commentRenderer = commentRenderer;
+    }
 
     // INTERFACE
     abstract render(): string;
     abstract getLineToSerCursor(): number;
 
     protected configureRenderer(renderer: LineRenderer): void {
-        renderer.documentLanguage = this.documentLanguage;
         renderer.dividerStartColumn = this.dividerStartColumn;
         renderer.dividerEndColumn = this.dividerEndColumn;
         renderer.dividerText = this.dividerText;
@@ -29,7 +35,7 @@ export class SingleLineBlockRenderer extends BlockRenderer {
     // RENDER
     render(): string {
         // prepare
-        let dividerRenderer = new DividerLineRenderer();
+        let dividerRenderer = new FullLineRenderer(this.commentRenderer);
         this.configureRenderer(dividerRenderer);
 
         // render
@@ -46,7 +52,7 @@ export class TwoLineBlockRenderer extends BlockRenderer {
     // RENDER
     render(): string {
         // prepare
-        let dividerRenderer = new DividerLineRenderer();
+        let dividerRenderer = new FullLineRenderer(this.commentRenderer);
         this.configureRenderer(dividerRenderer);
 
         // render
@@ -69,10 +75,10 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
     // RENDER
     render(): string {
         // prepare
-        let dividerRenderer = new DividerLineRenderer();
+        let dividerRenderer = new FullLineRenderer(this.commentRenderer);
         this.configureRenderer(dividerRenderer);
 
-        let emptyRenderer = new EmptyLineRenderer();
+        let emptyRenderer = new EmptyLineRenderer(this.commentRenderer);
         this.configureRenderer(emptyRenderer);
 
         // render
@@ -92,14 +98,14 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 // =============================================================================
 export class BlockRendererFactory {
 
-    static create(numberOfLines: number): BlockRenderer {
+    static create(numberOfLines: number, commentRenderer: CommentRenderer): BlockRenderer {
         let renderer = null;
         if (numberOfLines <= 1) {
-            renderer = new SingleLineBlockRenderer();
+            renderer = new SingleLineBlockRenderer(commentRenderer);
         } else if (numberOfLines === 2) {
-            renderer = new TwoLineBlockRenderer();
+            renderer = new TwoLineBlockRenderer(commentRenderer);
         } else {
-            renderer = new MultipleLineBlockRenderer();
+            renderer = new MultipleLineBlockRenderer(commentRenderer);
             renderer.lines = numberOfLines;
         }
         return renderer;

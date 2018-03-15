@@ -1,9 +1,9 @@
 import { BlockRenderer, BlockRendererFactory } from "./blockRenderers";
+import { CommentRenderer } from "./commentRenderers";
 
 export class DividerRenderer {
 
     // DOCUMENT DATA
-    documentLanguage: string = "";
     documentLineBreak: string = "\n";
 
     // DIVIDER DATA
@@ -12,11 +12,18 @@ export class DividerRenderer {
     dividerEndColumn: number = 80;
     dividerText: string = "=";
 
+    private readonly commentRenderer: CommentRenderer;
+
+    // CONSTRUCTOR
+    constructor(commentRenderer: CommentRenderer){
+        this.commentRenderer = commentRenderer;
+    }
+
     // =========================================================================
     // GETTERS
     // =========================================================================
     getLineToSerCursor(): number {
-        let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines);
+        let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines, this.commentRenderer);
         return blockRenderer.getLineToSerCursor();
     }
 
@@ -25,8 +32,7 @@ export class DividerRenderer {
     // =========================================================================
     render(): string {
         // configure block renderer
-        let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines);
-        blockRenderer.documentLanguage = this.documentLanguage;
+        let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines, this.commentRenderer);
         blockRenderer.dividerStartColumn = this.dividerStartColumn;
         blockRenderer.dividerEndColumn = this.dividerEndColumn;
         blockRenderer.dividerText = this.dividerText;
