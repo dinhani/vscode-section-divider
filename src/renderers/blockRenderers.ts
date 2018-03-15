@@ -1,5 +1,5 @@
 import { CommentRenderer } from "./commentRenderers";
-import { EmptyLineRenderer, FullLineRenderer, LineRenderer } from "./lineRenderers";
+import { EmptyLineRenderer, FullLineRenderer } from "./lineRenderers";
 
 export abstract class BlockRenderer {
 
@@ -8,13 +8,13 @@ export abstract class BlockRenderer {
     protected readonly fullLineRenderer: FullLineRenderer;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, dividerStartColumn: number, dividerEndColumn: number, dividerText: string){
+    constructor(commentRenderer: CommentRenderer){
         this.emptyLineRenderer = new EmptyLineRenderer(commentRenderer);
-        this.fullLineRenderer = new FullLineRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
+        this.fullLineRenderer = new FullLineRenderer(commentRenderer);
     }
 
     // INTERFACE
-    abstract render(): string;
+    abstract render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string;
     abstract getLineToSerCursor(): number;
 }
 
@@ -25,8 +25,8 @@ export class SingleLineBlockRenderer extends BlockRenderer {
     }
 
     // RENDER
-    render(): string {
-        return this.fullLineRenderer.render();
+    render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
+        return this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
     }
 }
 
@@ -37,9 +37,9 @@ export class TwoLineBlockRenderer extends BlockRenderer {
     }
 
     // RENDER
-    render(): string {
-        let block = `${this.fullLineRenderer.render()}\n`;
-        block += this.fullLineRenderer.render();
+    render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
+        let block = `${this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText)}\n`;
+        block += this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
 
         return block;
     }
@@ -55,13 +55,13 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
     }
 
     // RENDER
-    render(): string {
+    render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
         let emptyLines = this.lines - 2;
-        let block = `${this.fullLineRenderer.render()}\n`;
+        let block = `${this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText)}\n`;
         for (let emptyLine = 0; emptyLine < emptyLines; emptyLine++) {
             block += `${this.emptyLineRenderer.render()}\n`;
         }
-        block += this.fullLineRenderer.render();
+        block += this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
 
         return block;
     }
@@ -72,14 +72,14 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 // =============================================================================
 export class BlockRendererFactory {
 
-    static create(numberOfLines: number, commentRenderer: CommentRenderer, dividerStartColumn: number, dividerEndColumn: number, dividerText: string): BlockRenderer {
+    static create(numberOfLines: number, commentRenderer: CommentRenderer): BlockRenderer {
         let renderer = null;
         if (numberOfLines <= 1) {
-            renderer = new SingleLineBlockRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
+            renderer = new SingleLineBlockRenderer(commentRenderer);
         } else if (numberOfLines === 2) {
-            renderer = new TwoLineBlockRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
+            renderer = new TwoLineBlockRenderer(commentRenderer);
         } else {
-            renderer = new MultipleLineBlockRenderer(commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
+            renderer = new MultipleLineBlockRenderer(commentRenderer);
             renderer.lines = numberOfLines;
         }
         return renderer;

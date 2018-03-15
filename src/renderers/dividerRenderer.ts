@@ -6,13 +6,9 @@ export class DividerRenderer {
     // SERVICES
     private readonly blockRenderer: BlockRenderer;
 
-    // DATA
-    private dividerStartColumn: number;
-
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, numberOfLines: number, dividerStartColumn: number, dividerEndColumn: number, dividerText: string){
-        this.dividerStartColumn = dividerStartColumn;
-        this.blockRenderer = BlockRendererFactory.create(numberOfLines, commentRenderer, dividerStartColumn, dividerEndColumn, dividerText);
+    constructor(commentRenderer: CommentRenderer, numberOfLines: number){
+        this.blockRenderer = BlockRendererFactory.create(numberOfLines, commentRenderer);
     }
 
     // =========================================================================
@@ -25,19 +21,19 @@ export class DividerRenderer {
     // =========================================================================
     // RENDER
     // =========================================================================
-    render(): string {
+    render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
         // render divider
-        let divider = this.blockRenderer.render();
+        let divider = this.blockRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
 
         // add necessary identation to the left
-        let dividerWithIdentation = this.addIdentationSpace(divider);
+        let dividerWithIdentation = this.addIdentationSpace(divider, dividerStartColumn);
 
         return dividerWithIdentation;
     }
 
-    private addIdentationSpace(divider: string): string {
+    private addIdentationSpace(divider: string, dividerStartColumn: number): string {
         // configure whitespace
-        let whitespace = " ".repeat(this.dividerStartColumn);
+        let whitespace = " ".repeat(dividerStartColumn);
 
         // split lines to append whitespace and set line-breaks according to editor
         let lines = divider.split("\n");

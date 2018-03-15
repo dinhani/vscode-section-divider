@@ -6,28 +6,29 @@ suite("Block Renderers", () => {
     let commentRenderer = new LineCommentRenderer("//");
 
     test("SingleLineBlockRenderer render", () => {
-        let renderer = new SingleLineBlockRenderer(commentRenderer, 0, 80, "=");
-        let comment = renderer.render();
+        let renderer = new SingleLineBlockRenderer(commentRenderer);
+        let comment = renderer.render(0, 80, "=");
         assert.equal(comment, "// =============================================================================");
         assert.equal(comment.length, 80);
     });
     test("TwoLineBlockRenderer render", () => {
-        let renderer = new TwoLineBlockRenderer(commentRenderer, 0,  80, "=");
-        let comment = renderer.render();
+        let renderer = new TwoLineBlockRenderer(commentRenderer);
+        let comment = renderer.render(0,  80, "=");
         assert.equal(comment, "// =============================================================================\n// =============================================================================");
         assert.equal(comment.length, 161);
     });
     test("MultipleLineBlockRenderer render", () => {
-        let renderer = new MultipleLineBlockRenderer(commentRenderer, 0, 80, "=");
+        let renderer = new MultipleLineBlockRenderer(commentRenderer);
         renderer.lines = 3;
 
-        let comment = renderer.render();
+        let comment = renderer.render(0, 80, "=");
         assert.equal(comment, "// =============================================================================\n// \n// =============================================================================");
         assert.equal(comment.length, 165);
     });
     test("SingleLineBlockRenderer configure", () => {
-        let renderer = new SingleLineBlockRenderer(commentRenderer, 10, 60, "#");
-        let comment = renderer.render();
+        let renderer = new SingleLineBlockRenderer(commentRenderer);
+
+        let comment = renderer.render(10, 60, "#");
         assert.equal(comment, "// ###############################################");
         assert.equal(comment.length, 50);
     });
