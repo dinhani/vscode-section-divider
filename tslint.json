@@ -16,20 +16,29 @@
             true,
             "LF"
         ],
+        "member-ordering": [
+            true,
+            {
+                "order": "fields-first"
+            }
+        ],
         "no-banned-terms": true,
         "no-consecutive-blank-lines": true,
         "no-console": true,
         "no-duplicate-imports": true,
         "no-empty": true,
         "no-irregular-whitespace": true,
+        "no-parameter-reassignment": true,
         "no-reserved-keywords": true,
         "no-single-line-block-comment": true,
         "no-trailing-whitespace": true,
         "no-unnecessary-initializer": true,
         "no-unnecessary-semicolons": true,
         "no-use-before-declare": true,
+        "no-var-keyword": true,
         "number-literal-format": true,
         "ordered-imports": true,
+        "prefer-readonly": true,
         "prefer-template": true,
         "quotemark": [
             true,

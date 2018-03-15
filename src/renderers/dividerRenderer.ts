@@ -34,7 +34,7 @@ export class DividerRenderer {
         // render divider
         let divider = blockRenderer.render();
 
-        // add necessary identatino to the left
+        // add necessary identation to the left
         let dividerWithIdentation = this.addIdentationSpace(divider);
 
         return dividerWithIdentation;
