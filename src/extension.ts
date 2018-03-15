@@ -68,7 +68,7 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
 
     // insert divider
     let editor = vscode.window.activeTextEditor;
-    editor.edit(editor => { editor.replace(selection, divider); });
+    editor.edit(edit => edit.replace(selection, divider));
 
     // position the cursor inside or after the divider
     let lineToSetCursor = selection.start.line + (renderer.getLineToSerCursor() - 1);
