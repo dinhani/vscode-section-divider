@@ -1,27 +1,31 @@
-import { CommentRendererFactory } from "./commentRenderers";
+import { CommentRenderer } from "./commentRenderers";
 
 export abstract class LineRenderer {
 
     // DATA
-    documentLanguage: string = "";
     dividerStartColumn: number = 0;
     dividerEndColumn: number = 80;
     dividerText: string = "=";
+
+    protected readonly commentRenderer: CommentRenderer;
+
+    // CONSTRUCTOR
+    constructor(commentRenderer: CommentRenderer){
+        this.commentRenderer = commentRenderer;
+    }
 
     // RENDER
     abstract render(): string;
 }
 
-export class DividerLineRenderer extends LineRenderer {
+export class FullLineRenderer extends LineRenderer {
 
     // RENDER
     render(): string {
-        let commentRenderer = CommentRendererFactory.create(this.documentLanguage);
-
-        let dividerTextLength = (this.dividerEndColumn - this.dividerStartColumn - commentRenderer.getMinimumSize());
+        let dividerTextLength = (this.dividerEndColumn - this.dividerStartColumn - this.commentRenderer.getMinimumSize());
         let dividerText = this.dividerText.repeat(dividerTextLength).substring(0, dividerTextLength);
 
-        return commentRenderer.render(dividerText);
+        return this.commentRenderer.render(dividerText);
     }
 }
 
@@ -29,7 +33,6 @@ export class EmptyLineRenderer extends LineRenderer {
 
     // RENDER
     render(): string {
-        let commentRenderer = CommentRendererFactory.create(this.documentLanguage);
-        return commentRenderer.render("");
+        return this.commentRenderer.render("");
     }
 }

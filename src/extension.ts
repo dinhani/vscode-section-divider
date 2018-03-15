@@ -60,8 +60,8 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
     }
 
     // configure divider renderer
-    let renderer = new DividerRenderer();
-    renderer.documentLanguage = language;
+    let commentRenderer = CommentRendererFactory.create(language);
+    let renderer = new DividerRenderer(commentRenderer);
     renderer.dividerNumberOfLines = configNumberOfLines;
     renderer.dividerStartColumn = selection.start.character;
     renderer.dividerEndColumn = configEndColumn;
@@ -78,7 +78,7 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
     let lineToSetCursor = selection.start.line + (renderer.getLineToSerCursor() - 1);
     let positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character);
     if (configNumberOfLines >= 3) {
-        positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + CommentRendererFactory.create(language).startCommentText.length + 1);
+        positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + commentRenderer.startCommentText.length + 1);
     }
     let selectionToSetCursor = new vscode.Selection(positionToSetCursor, positionToSetCursor);
     vscode.window.activeTextEditor.selection = selectionToSetCursor;
