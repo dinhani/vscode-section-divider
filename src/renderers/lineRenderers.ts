@@ -1,9 +1,9 @@
 import { CommentRenderer } from "./commentRenderers";
 
-export abstract class LineRenderer {
+export class FullLineRenderer {
 
     // SERVICES
-    protected readonly commentRenderer: CommentRenderer;
+    private readonly commentRenderer: CommentRenderer;
 
     // CONSTRUCTOR
     constructor(commentRenderer: CommentRenderer) {
@@ -11,34 +11,23 @@ export abstract class LineRenderer {
     }
 
     // RENDER
-    abstract render(): string;
-}
-
-export class FullLineRenderer extends LineRenderer {
-
-    // DATA
-    private dividerStartColumn: number = 0;
-    private dividerEndColumn: number = 80;
-    private dividerText: string = "=";
-
-    // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, dividerStartColumn: number, dividerEndColumn: number, dividerText: string) {
-        super(commentRenderer);
-        this.dividerStartColumn = dividerStartColumn;
-        this.dividerEndColumn = dividerEndColumn;
-        this.dividerText = dividerText;
-    }
-
-    // RENDER
-    render(): string {
-        let lineLength = (this.dividerEndColumn - this.dividerStartColumn - this.commentRenderer.getMinimumSize());
-        let lineText = this.dividerText.repeat(lineLength).substring(0, lineLength);
+    render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
+        let lineLength = (dividerEndColumn - dividerStartColumn - this.commentRenderer.getMinimumSize());
+        let lineText = dividerText.repeat(lineLength).substring(0, lineLength);
 
         return this.commentRenderer.render(lineText);
     }
 }
 
-export class EmptyLineRenderer extends LineRenderer {
+export class EmptyLineRenderer {
+
+    // SERVICES
+    private commentRenderer: CommentRenderer;
+
+    // CONSTRUCTOR
+    constructor(commentRenderer: CommentRenderer) {
+        this.commentRenderer = commentRenderer;
+    }
 
     // RENDER
     render(): string {

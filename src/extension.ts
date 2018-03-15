@@ -51,20 +51,20 @@ export function deactivate(): void {
 function insertDivider(selection: vscode.Selection, numberOfLines?: number): void {
     // read config
     let config = vscode.workspace.getConfiguration("divider");
+
     let configNumberOfLines = config.get("lines", 3);
     let configEndColumn = config.get("endColumn", 80);
     let configText = config.get("text", "=");
-    let language = vscode.window.activeTextEditor.document.languageId;
     if (numberOfLines) {
         configNumberOfLines = numberOfLines;
     }
 
     // configure divider renderer
-    let commentRenderer = CommentRendererFactory.create(language);
-    let renderer = new DividerRenderer(commentRenderer, configNumberOfLines, selection.start.character, configEndColumn, configText);
+    let commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId);
+    let renderer = new DividerRenderer(commentRenderer, configNumberOfLines);
 
     // render divider
-    let divider = renderer.render();
+    let divider = renderer.render(selection.start.character, configEndColumn, configText);
 
     // insert divider
     let editor = vscode.window.activeTextEditor;
