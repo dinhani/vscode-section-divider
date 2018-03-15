@@ -19,8 +19,8 @@ export class LineCommentRenderer extends CommentRenderer {
     }
 
     // RENDER
-    render(startCommentText: string): string {
-        return this.startCommentText + " " + startCommentText;
+    render(text: string): string {
+        return `${this.startCommentText} ${text}`;
     }
 }
 
@@ -42,7 +42,7 @@ export class BlockCommentRenderer extends CommentRenderer {
 
     // RENDER
     render(text: string): string {
-        return this.startCommentText + " " + text + " " + this.endCommentText;
+        return `${this.startCommentText} ${text} ${this.endCommentText}`;
     }
 }
 

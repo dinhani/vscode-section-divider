@@ -50,7 +50,7 @@ export class TwoLineBlockRenderer extends BlockRenderer {
         this.configureRenderer(dividerRenderer);
 
         // render
-        let block = dividerRenderer.render() + "\n";
+        let block = `${dividerRenderer.render()}\n`;
         block += dividerRenderer.render();
 
         return block;
@@ -77,9 +77,9 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 
         // render
         let emptyLines = this.lines - 2;
-        let block = dividerRenderer.render() + "\n";
+        let block = `${dividerRenderer.render()}\n`;
         for (let emptyLine = 0; emptyLine < emptyLines; emptyLine++) {
-            block += emptyRenderer.render() + "\n";
+            block += `${emptyRenderer.render()}\n`;
         }
         block += dividerRenderer.render();
 

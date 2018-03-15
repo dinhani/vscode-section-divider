@@ -1,5 +1,6 @@
 {
     "rules": {
+        "adjacent-overload-signatures": true,
         "arrow-parens": [
             true,
             "ban-single-arg-parens"
@@ -29,6 +30,7 @@
         "no-use-before-declare": true,
         "number-literal-format": true,
         "ordered-imports": true,
+        "prefer-template": true,
         "quotemark": [
             true,
             "double"
