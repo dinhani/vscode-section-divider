@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { SingleLineBlockRenderer, TwoLineBlockRenderer, MultipleLineBlockRenderer } from "../../src/renderers/blockRenderers";
+import { MultipleLineBlockRenderer, SingleLineBlockRenderer, TwoLineBlockRenderer } from "../../src/renderers/blockRenderers";
 
 suite("Block Renderers", () => {
     test("SingleLineBlockRenderer render", () => {

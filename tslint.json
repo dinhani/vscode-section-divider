@@ -28,6 +28,7 @@
         "no-unnecessary-semicolons": true,
         "no-use-before-declare": true,
         "number-literal-format": true,
+        "ordered-imports": true,
         "quotemark": [
             true,
             "double"

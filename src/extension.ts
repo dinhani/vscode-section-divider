@@ -2,8 +2,8 @@
 
 import * as vscode from "vscode";
 
-import { DividerRenderer } from "./renderers/dividerRenderer";
 import { CommentRendererFactory } from "./renderers/commentRenderers";
+import { DividerRenderer } from "./renderers/dividerRenderer";
 
 // ============================================================================
 // EXTENSION INTERFACE
