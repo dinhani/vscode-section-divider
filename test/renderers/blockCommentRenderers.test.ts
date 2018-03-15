@@ -19,14 +19,12 @@ suite("Block Renderers", () => {
     });
     test("MultipleLineBlockRenderer render", () => {
         let renderer = new MultipleLineBlockRenderer(commentRenderer, 3);
-
         let comment = renderer.render(0, 80, "=");
         assert.equal(comment, "// =============================================================================\n// \n// =============================================================================");
         assert.equal(comment.length, 165);
     });
     test("SingleLineBlockRenderer configure", () => {
         let renderer = new SingleLineBlockRenderer(commentRenderer);
-
         let comment = renderer.render(10, 60, "#");
         assert.equal(comment, "// ###############################################");
         assert.equal(comment.length, 50);
