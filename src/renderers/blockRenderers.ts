@@ -1,4 +1,4 @@
-import { LineRenderer, DividerLineRenderer, EmptyLineRenderer } from './lineRenderers';
+import { LineRenderer, DividerLineRenderer, EmptyLineRenderer } from "./lineRenderers";
 
 export abstract class BlockRenderer {
 
@@ -12,7 +12,7 @@ export abstract class BlockRenderer {
     abstract render(): string;
     abstract getLineToSerCursor(): number;
 
-    protected configureRenderer(renderer: LineRenderer) {
+    protected configureRenderer(renderer: LineRenderer): void {
         renderer.documentLanguage = this.documentLanguage;
         renderer.dividerStartColumn = this.dividerStartColumn;
         renderer.dividerEndColumn = this.dividerEndColumn;
@@ -96,7 +96,7 @@ export class BlockRendererFactory {
         let renderer = null;
         if (numberOfLines <= 1) {
             renderer = new SingleLineBlockRenderer();
-        } else if (numberOfLines == 2) {
+        } else if (numberOfLines === 2) {
             renderer = new TwoLineBlockRenderer();
         } else {
             renderer = new MultipleLineBlockRenderer();

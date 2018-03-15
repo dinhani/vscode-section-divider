@@ -1,17 +1,17 @@
-'use strict';
+"use strict";
 
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
-import { DividerRenderer } from './renderers/dividerRenderer';
-import { CommentRendererFactory } from './renderers/commentRenderers';
+import { DividerRenderer } from "./renderers/dividerRenderer";
+import { CommentRendererFactory } from "./renderers/commentRenderers";
 
 // ============================================================================
 // EXTENSION INTERFACE
 // ============================================================================
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
 
     // FROM CURSOR
-    let fromCursor = vscode.commands.registerCommand('divider.addFromCursor', () => {
+    let fromCursor = vscode.commands.registerCommand("divider.addFromCursor", () => {
         // prepare selection
         let currentSelection = vscode.window.activeTextEditor.selection;
 
@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(fromCursor);
 
     // FROM CURSOR WITH ONE LINE
-    let fromCursorWithOneLine = vscode.commands.registerCommand('divider.addFromCursorWithOneLine', () => {
+    let fromCursorWithOneLine = vscode.commands.registerCommand("divider.addFromCursorWithOneLine", () => {
         // prepare selection
         let currentSelection = vscode.window.activeTextEditor.selection;
 
@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(fromCursor);
 
     // FROM LINE START
-    let fromLineStart = vscode.commands.registerCommand('divider.addFromLineStart', () => {
+    let fromLineStart = vscode.commands.registerCommand("divider.addFromLineStart", () => {
         // prepare selection
         let currentSelection = vscode.window.activeTextEditor.selection;
         let startPositionAtStartOfLine = new vscode.Position(currentSelection.start.line, 0);
@@ -43,13 +43,14 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(fromLineStart);
 }
 
-export function deactivate() {
+export function deactivate(): void {
+    // do nothing
 }
 
 // =============================================================================
 // INSERT DIVIDER ENTRY POINT
 // =============================================================================
-function insertDivider(selection: vscode.Selection, numberOfLines?: number) {
+function insertDivider(selection: vscode.Selection, numberOfLines?: number): void {
     // read config
     let config = vscode.workspace.getConfiguration("divider");
     let configNumberOfLines = config.get("lines", 3);
@@ -73,7 +74,7 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number) {
 
     // insert divider
     let editor = vscode.window.activeTextEditor;
-    editor.edit((editor) => { editor.replace(selection, divider); });
+    editor.edit(editor => { editor.replace(selection, divider); });
 
     // position the cursor inside or after the divider
     let lineToSetCursor = selection.start.line + (renderer.getLineToSerCursor() - 1);

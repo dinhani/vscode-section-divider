@@ -1,4 +1,4 @@
-import { BlockRendererFactory, BlockRenderer } from './blockRenderers';
+import { BlockRendererFactory, BlockRenderer } from "./blockRenderers";
 
 export class DividerRenderer {
 
@@ -27,7 +27,7 @@ export class DividerRenderer {
         // configure block renderer
         let blockRenderer = BlockRendererFactory.create(this.dividerNumberOfLines);
         blockRenderer.documentLanguage = this.documentLanguage;
-        blockRenderer.dividerStartColumn = this.dividerStartColumn
+        blockRenderer.dividerStartColumn = this.dividerStartColumn;
         blockRenderer.dividerEndColumn = this.dividerEndColumn;
         blockRenderer.dividerText = this.dividerText;
 
@@ -52,15 +52,15 @@ export class DividerRenderer {
             let line = lines[index];
 
             // append whitespace if not first line
-            if (index != 0) {
+            if (index !== 0) {
                 line = whitespace + line;
             }
 
             // append line to the new divider
-            dividerWithIdentation += line
+            dividerWithIdentation += line;
 
             // append line-break if not last line
-            if (index != lines.length - 1) {
+            if (index !== lines.length - 1) {
                 dividerWithIdentation += this.documentLineBreak;
             }
         }

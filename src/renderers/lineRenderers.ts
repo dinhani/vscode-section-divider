@@ -1,4 +1,4 @@
-import { CommentRendererFactory } from './commentRenderers';
+import { CommentRendererFactory } from "./commentRenderers";
 
 export abstract class LineRenderer {
 
@@ -21,7 +21,7 @@ export class DividerLineRenderer extends LineRenderer {
         let dividerTextLength = (this.dividerEndColumn - this.dividerStartColumn - commentRenderer.getMinimumSize());
         let dividerText = this.dividerText.repeat(dividerTextLength).substring(0, dividerTextLength);
 
-        return commentRenderer.render(dividerText)
+        return commentRenderer.render(dividerText);
     }
 }
 

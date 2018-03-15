@@ -1,6 +1,6 @@
 export abstract class CommentRenderer {
     // DATA
-    startCommentText: string
+    startCommentText: string;
 
     abstract render(text: string): string;
     abstract getMinimumSize(): number;
@@ -26,11 +26,11 @@ export class LineCommentRenderer extends CommentRenderer {
 
 export class BlockCommentRenderer extends CommentRenderer {
     // DATA
-    endCommentText: string
+    endCommentText: string;
 
     // CONSTRUCTOR
     constructor(startCommentText: string, endCommentText: string) {
-        super()
+        super();
         this.startCommentText = startCommentText;
         this.endCommentText = endCommentText;
     }

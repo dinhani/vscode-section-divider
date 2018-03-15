@@ -1,0 +1,57 @@
+{
+    "rules": {
+        "arrow-parens": [
+            true,
+            "ban-single-arg-parens"
+        ],
+        "curly": true,
+        "encoding": true,
+        "import-spacing": true,
+        "indent": [
+            true,
+            "spaces"
+        ],
+        "linebreak-style": [
+            true,
+            "LF"
+        ],
+        "no-banned-terms": true,
+        "no-consecutive-blank-lines": true,
+        "no-console": true,
+        "no-duplicate-imports": true,
+        "no-empty": true,
+        "no-irregular-whitespace": true,
+        "no-reserved-keywords": true,
+        "no-single-line-block-comment": true,
+        "no-trailing-whitespace": true,
+        "no-unnecessary-initializer": true,
+        "no-unnecessary-semicolons": true,
+        "no-use-before-declare": true,
+        "number-literal-format": true,
+        "quotemark": [
+            true,
+            "double"
+        ],
+        "semicolon": true,
+        "switch-default": true,
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "never",
+                "singleline": "never"
+            }
+        ],
+        "triple-equals": true,
+        "typedef": [
+            true,
+            "call-signature",
+            "member-variable-declaration",
+            "parameter",
+            "property-declaration"
+        ],
+        "whitespace": true
+    },
+    "rulesDirectory": [
+        "node_modules/tslint-microsoft-contrib"
+    ]
+}

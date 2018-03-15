@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { SingleLineBlockRenderer, TwoLineBlockRenderer, MultipleLineBlockRenderer } from '../../src/renderers/blockRenderers'
+import * as assert from "assert";
+import { SingleLineBlockRenderer, TwoLineBlockRenderer, MultipleLineBlockRenderer } from "../../src/renderers/blockRenderers";
 
 suite("Block Renderers", () => {
     test("SingleLineBlockRenderer render", () => {
@@ -24,7 +24,7 @@ suite("Block Renderers", () => {
     });
     test("SingleLineBlockRenderer configure", () => {
         let renderer = new SingleLineBlockRenderer();
-        renderer.dividerStartColumn = 10
+        renderer.dividerStartColumn = 10;
         renderer.dividerEndColumn = 60;
         renderer.dividerText = "#";
         let comment = renderer.render();

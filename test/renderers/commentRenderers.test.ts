@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { CommentRendererFactory, LineCommentRenderer, BlockCommentRenderer } from '../../src/renderers/commentRenderers'
+import * as assert from "assert";
+import { CommentRendererFactory, LineCommentRenderer, BlockCommentRenderer } from "../../src/renderers/commentRenderers";
 
 suite("Comment Renderers", () => {
     test("LineCommentRenderer render", () => {
@@ -9,7 +9,7 @@ suite("Comment Renderers", () => {
     });
     test("LineCommentRenderer properties", () => {
         let renderer = new LineCommentRenderer("//");
-        renderer.startCommentText = "#"
+        renderer.startCommentText = "#";
         let comment = renderer.render("test");
         assert.equal(comment, "# test");
     });
