@@ -102,6 +102,7 @@ export class CommentRendererFactory {
             case "python":
             case "r":
             case "ruby":
+            case "shellscript":
             case "yaml":
                 return new LineCommentRenderer("#");
             // --
