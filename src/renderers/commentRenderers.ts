@@ -147,10 +147,11 @@ export class CommentRendererFactory {
                 return new BlockCommentRenderer("/*", "*/");
             // <!-- -->
             case "coldfusion":
-            case "markdown":
             case "html":
-            case "xsl":
+            case "markdown":
+            case "vue":
             case "xml":
+            case "xsl":
                 return new BlockCommentRenderer("<!--", "-->");
             case "mathematica":
             case "wolfram":
