@@ -1,5 +1,7 @@
 # Change Log
 
+**1.1.3:** Vue supported
+
 **1.1.2:** Shellscript supported
 
 **1.1.1:** More languages supported
