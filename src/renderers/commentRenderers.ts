@@ -112,6 +112,9 @@ export class CommentRendererFactory {
             case "lua":
             case "sql":
                 return new LineCommentRenderer("--");
+            // ;
+            case "ahk":
+                return new LineCommentRenderer(";");
             // ;;
             case "clojure":
             case "lisp":
