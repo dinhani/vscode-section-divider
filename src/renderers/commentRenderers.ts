@@ -59,9 +59,16 @@ export class BlockCommentRenderer extends CommentRenderer {
 export class CommentRendererFactory {
 
     static create(language: string): CommentRenderer {
-        language = language.toLowerCase();
+        // check no language parameter present
+        if (!language) {
+            return new LineCommentRenderer("//");
+        }
 
-        switch (language) {
+        // prepare language parameter
+        let languageNormalized = language.toLowerCase().trim();
+
+        // check language
+        switch (languageNormalized) {
             // //
             case "c":
             case "ceylon":

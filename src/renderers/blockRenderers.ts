@@ -8,7 +8,7 @@ export abstract class BlockRenderer {
     protected readonly fullLineRenderer: FullLineRenderer;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer){
+    constructor(commentRenderer: CommentRenderer) {
         this.emptyLineRenderer = new EmptyLineRenderer(commentRenderer);
         this.fullLineRenderer = new FullLineRenderer(commentRenderer);
     }
@@ -50,7 +50,7 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
     readonly lines: number;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, lines: number){
+    constructor(commentRenderer: CommentRenderer, lines: number) {
         super(commentRenderer);
         this.lines = lines;
     }

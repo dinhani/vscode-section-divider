@@ -1,7 +1,6 @@
 import * as assert from "assert";
-
 import { LineCommentRenderer } from "../../src/renderers/commentRenderers";
-import { EmptyLineRenderer ,FullLineRenderer  } from "../../src/renderers/lineRenderers";
+import { EmptyLineRenderer, FullLineRenderer } from "../../src/renderers/lineRenderers";
 
 suite("Line Renderers", () => {
     let commentRenderer = new LineCommentRenderer("//");

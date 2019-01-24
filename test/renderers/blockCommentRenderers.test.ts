@@ -13,7 +13,7 @@ suite("Block Renderers", () => {
     });
     test("TwoLineBlockRenderer render", () => {
         let renderer = new TwoLineBlockRenderer(commentRenderer);
-        let comment = renderer.render(0,  80, "=");
+        let comment = renderer.render(0, 80, "=");
         assert.equal(comment, "// =============================================================================\n// =============================================================================");
         assert.equal(comment.length, 161);
     });
