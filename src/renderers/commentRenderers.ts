@@ -59,6 +59,8 @@ export class BlockCommentRenderer extends CommentRenderer {
 export class CommentRendererFactory {
 
     static create(language: string): CommentRenderer {
+        language = language.toLowerCase();
+
         switch (language) {
             // //
             case "c":
@@ -151,6 +153,7 @@ export class CommentRendererFactory {
             // <!-- -->
             case "coldfusion":
             case "html":
+            case "html (eex)":
             case "markdown":
             case "vue":
             case "xml":
