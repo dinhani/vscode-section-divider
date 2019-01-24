@@ -7,7 +7,7 @@ export class DividerRenderer {
     private readonly blockRenderer: BlockRenderer;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, numberOfLines: number){
+    constructor(commentRenderer: CommentRenderer, numberOfLines: number) {
         this.blockRenderer = BlockRendererFactory.create(numberOfLines, commentRenderer);
     }
 
