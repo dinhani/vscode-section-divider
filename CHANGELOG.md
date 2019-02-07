@@ -1,5 +1,7 @@
 # Change Log
 
+**1.1.7:** ERB supported
+
 **1.1.6:** Gemfile supported
 
 **1.1.5:** HTML (Elixir) supported

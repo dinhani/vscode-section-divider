@@ -160,6 +160,7 @@ export class CommentRendererFactory {
                 return new BlockCommentRenderer("/*", "*/");
             // <!-- -->
             case "coldfusion":
+            case "erb":
             case "html":
             case "html (eex)":
             case "markdown":
