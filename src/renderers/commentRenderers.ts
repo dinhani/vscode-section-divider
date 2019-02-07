@@ -101,6 +101,7 @@ export class CommentRendererFactory {
             case "crystal":
             case "dockerfile":
             case "elixir":
+            case "gemfile":
             case "graphql":
             case "julia":
             case "makefile":
