@@ -1,23 +1,23 @@
 import * as assert from "assert";
-import { IdentationRenderer } from "../../src/renderers/identationRenderer";
+import { IndentationRenderer } from "../../src/renderers/indentationRenderer";
 
-suite("Identation Renderer", () => {
-    const identationRenderer = new IdentationRenderer();
+suite("Indentation Renderer", () => {
+    const indentationRenderer = new IndentationRenderer();
 
     test("Render tabs from tabs", () => {
-        const identation = identationRenderer.render("\t\t\t");
+        const identation = indentationRenderer.render("\t\t\t");
         assert.equal(identation, "\t\t\t");
     });
     test("Render spaces from spaces", () => {
-        const identation = identationRenderer.render("    ");
+        const identation = indentationRenderer.render("    ");
         assert.equal(identation, "    ");
     });
     test("Render spaces from all characters that are not tabs", () => {
-        const identation = identationRenderer.render("renato 123{}!?");
+        const identation = indentationRenderer.render("renato 123{}!?");
         assert.equal(identation, "              ");
     });
     test("Render tabs and spaces mixed", () => {
-        const identation = identationRenderer.render("\t \t renato\t");
+        const identation = indentationRenderer.render("\t \t renato\t");
         assert.equal(identation, "\t \t       \t");
     });
 });

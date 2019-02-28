@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 
 import { CommentRendererFactory } from "./renderers/commentRenderers";
 import { DividerRenderer } from "./renderers/dividerRenderer";
-import { IdentationRenderer } from "./renderers/identationRenderer";
+import { IndentationRenderer } from "./renderers/indentationRenderer";
 
 // ============================================================================
 // EXTENSION INTERFACE
@@ -60,14 +60,14 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
     }
 
     // configure identation
-    const identationRenderer = new IdentationRenderer();
-    const identationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
-    const identationSelectionText = vscode.window.activeTextEditor.document.getText(identationSelection);
-    const identation = identationRenderer.render(identationSelectionText);
+    const indentationRenderer = new IndentationRenderer();
+    const indentationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
+    const indentationSelectionText = vscode.window.activeTextEditor.document.getText(indentationSelection);
+    const indentation = indentationRenderer.render(indentationSelectionText);
 
     // configure divider renderer
     const commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId);
-    const dividerRenderer = new DividerRenderer(commentRenderer, configNumberOfLines, identation);
+    const dividerRenderer = new DividerRenderer(commentRenderer, configNumberOfLines, indentation);
 
     // render divider
     const divider = dividerRenderer.render(selection.start.character, configEndColumn, configText);
