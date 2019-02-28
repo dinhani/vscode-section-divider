@@ -5,10 +5,12 @@ export class DividerRenderer {
 
     // SERVICES
     private readonly blockRenderer: BlockRenderer;
+    private readonly identation: string;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, numberOfLines: number) {
+    constructor(commentRenderer: CommentRenderer, numberOfLines: number, identation: string) {
         this.blockRenderer = BlockRendererFactory.create(numberOfLines, commentRenderer);
+        this.identation = identation;
     }
 
     // =========================================================================
@@ -32,9 +34,6 @@ export class DividerRenderer {
     }
 
     private addIdentationSpace(divider: string, dividerStartColumn: number): string {
-        // configure whitespace
-        const whitespace = " ".repeat(dividerStartColumn);
-
         // split lines to append whitespace and set line-breaks according to editor
         const lines = divider.split("\n");
 
@@ -44,7 +43,7 @@ export class DividerRenderer {
 
             // append whitespace if not first line
             if (index !== 0) {
-                line = whitespace + line;
+                line = this.identation + line;
             }
 
             // append line to the new divider
