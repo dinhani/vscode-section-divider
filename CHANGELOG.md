@@ -1,5 +1,7 @@
 # Change Log
 
+**1.2.1:** Bugfix in tab support implementation
+
 **1.2.0:** Tab support
 
 ---

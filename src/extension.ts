@@ -61,7 +61,7 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
 
     // configure identation
     const identationRenderer = new IdentationRenderer();
-    const identationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.end.character);
+    const identationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
     const identationSelectionText = vscode.window.activeTextEditor.document.getText(identationSelection);
     const identation = identationRenderer.render(identationSelectionText);
 
