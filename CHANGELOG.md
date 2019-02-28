@@ -1,5 +1,9 @@
 # Change Log
 
+**1.2.0:** Tab support
+
+---
+
 **1.1.7:** ERB supported
 
 **1.1.6:** Gemfile supported

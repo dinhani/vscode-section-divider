@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 
 import { CommentRendererFactory } from "./renderers/commentRenderers";
 import { DividerRenderer } from "./renderers/dividerRenderer";
+import { IdentationRenderer } from "./renderers/identationRenderer";
 
 // ============================================================================
 // EXTENSION INTERFACE
@@ -58,19 +59,25 @@ function insertDivider(selection: vscode.Selection, numberOfLines?: number): voi
         configNumberOfLines = numberOfLines;
     }
 
+    // configure identation
+    const identationRenderer = new IdentationRenderer();
+    const identationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.end.character);
+    const identationSelectionText = vscode.window.activeTextEditor.document.getText(identationSelection);
+    const identation = identationRenderer.getIdentation(identationSelectionText);
+
     // configure divider renderer
     const commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId);
-    const renderer = new DividerRenderer(commentRenderer, configNumberOfLines);
+    const dividerRenderer = new DividerRenderer(commentRenderer, configNumberOfLines, identation);
 
     // render divider
-    const divider = renderer.render(selection.start.character, configEndColumn, configText);
+    const divider = dividerRenderer.render(selection.start.character, configEndColumn, configText);
 
     // insert divider
     const editor = vscode.window.activeTextEditor;
     editor.edit(edit => edit.replace(selection, divider));
 
     // position the cursor inside or after the divider
-    const lineToSetCursor = selection.start.line + (renderer.getLineToSerCursor() - 1);
+    const lineToSetCursor = selection.start.line + (dividerRenderer.getLineToSerCursor() - 1);
     let positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character);
     if (configNumberOfLines >= 3) {
         positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + commentRenderer.startCommentText.length + 1);
