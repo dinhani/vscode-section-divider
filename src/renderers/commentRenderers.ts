@@ -65,7 +65,7 @@ export class CommentRendererFactory {
         }
 
         // prepare language parameter
-        let languageNormalized = language.toLowerCase().trim();
+        const languageNormalized = language.toLowerCase().trim();
 
         // check language
         switch (languageNormalized) {
