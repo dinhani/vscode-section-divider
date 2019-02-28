@@ -62,7 +62,7 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 
     // RENDER
     render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
-        let emptyLines = this.lines - 2;
+        const emptyLines = this.lines - 2;
         let block = `${this.fullLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText)}\n`;
         for (let emptyLine = 0; emptyLine < emptyLines; emptyLine++) {
             block += `${this.emptyLineRenderer.render(dividerStartColumn, dividerEndColumn, dividerText)}\n`;
@@ -79,14 +79,12 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
 export class BlockRendererFactory {
 
     static create(numberOfLines: number, commentRenderer: CommentRenderer): BlockRenderer {
-        let renderer = null;
         if (numberOfLines <= 1) {
-            renderer = new SingleLineBlockRenderer(commentRenderer);
+            return new SingleLineBlockRenderer(commentRenderer);
         } else if (numberOfLines === 2) {
-            renderer = new TwoLineBlockRenderer(commentRenderer);
+            return new TwoLineBlockRenderer(commentRenderer);
         } else {
-            renderer = new MultipleLineBlockRenderer(commentRenderer, numberOfLines);
+            return new MultipleLineBlockRenderer(commentRenderer, numberOfLines);
         }
-        return renderer;
     }
 }

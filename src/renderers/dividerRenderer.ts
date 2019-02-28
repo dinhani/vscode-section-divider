@@ -33,10 +33,10 @@ export class DividerRenderer {
 
     private addIdentationSpace(divider: string, dividerStartColumn: number): string {
         // configure whitespace
-        let whitespace = " ".repeat(dividerStartColumn);
+        const whitespace = " ".repeat(dividerStartColumn);
 
         // split lines to append whitespace and set line-breaks according to editor
-        let lines = divider.split("\n");
+        const lines = divider.split("\n");
 
         let dividerWithIdentation = "";
         for (let index = 0; index < lines.length; index++) {

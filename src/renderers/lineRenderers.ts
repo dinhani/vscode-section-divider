@@ -23,8 +23,8 @@ export class FullLineRenderer extends LineRenderer {
 
     // RENDER
     render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string {
-        let lineLength = (dividerEndColumn - dividerStartColumn - this.commentRenderer.getMinimumSize());
-        let lineText = dividerText.repeat(lineLength).substring(0, lineLength);
+        const lineLength = (dividerEndColumn - dividerStartColumn - this.commentRenderer.getMinimumSize());
+        const lineText = dividerText.repeat(lineLength).substring(0, lineLength);
 
         return this.commentRenderer.render(lineText);
     }
