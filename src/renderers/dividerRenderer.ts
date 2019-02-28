@@ -15,7 +15,7 @@ export class DividerRenderer {
     // GETTERS
     // =========================================================================
     getLineToSerCursor(): number {
-        return this.blockRenderer.getLineToSerCursor();
+        return this.blockRenderer.getLineToSetCursor();
     }
 
     // =========================================================================
