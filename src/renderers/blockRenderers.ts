@@ -15,12 +15,12 @@ export abstract class BlockRenderer {
 
     // INTERFACE
     abstract render(dividerStartColumn: number, dividerEndColumn: number, dividerText: string): string;
-    abstract getLineToSerCursor(): number;
+    abstract getLineToSetCursor(): number;
 }
 
 export class SingleLineBlockRenderer extends BlockRenderer {
     // METADATA
-    getLineToSerCursor(): number {
+    getLineToSetCursor(): number {
         return 2;
     }
 
@@ -32,7 +32,7 @@ export class SingleLineBlockRenderer extends BlockRenderer {
 
 export class TwoLineBlockRenderer extends BlockRenderer {
     // METADATA
-    getLineToSerCursor(): number {
+    getLineToSetCursor(): number {
         return 3;
     }
 
@@ -56,7 +56,7 @@ export class MultipleLineBlockRenderer extends BlockRenderer {
     }
 
     // METADATA
-    getLineToSerCursor(): number {
+    getLineToSetCursor(): number {
         return 2;
     }
 
