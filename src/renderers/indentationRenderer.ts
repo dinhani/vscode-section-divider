@@ -1,4 +1,4 @@
-export class IdentationRenderer {
+export class IndentationRenderer {
 
     render(identationText: string): string {
         return identationText
