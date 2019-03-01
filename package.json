@@ -15,20 +15,30 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onCommand:divider.addFromCursor"
+        "onCommand:divider.addDividerLevel1",
+        "onCommand:divider.addDividerLevel2"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "divider.addFromCursor",
-                "title": "Divider: Add From Cursor"
+                "command": "divider.addDividerLevel1",
+                "title": "Divider: Add Divider - Level 1"
+            },
+            {
+                "command": "divider.addDividerLevel2",
+                "title": "Divider: Add Divider - Level 2"
             }
         ],
         "keybindings": [
             {
-                "command": "divider.addFromCursor",
+                "command": "divider.addDividerLevel1",
                 "key": "alt+d",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "divider.addDividerLevel2",
+                "key": "alt+ctrl+d",
                 "when": "editorTextFocus"
             }
         ],
@@ -36,10 +46,15 @@
             "type": "object",
             "title": "Section Divider extension",
             "properties": {
-                "divider.text": {
+                "divider.text.level1": {
                     "type": "string",
                     "default": "=",
-                    "description": "Text that will be used to fill the section divider lines."
+                    "description": "Text that will be used to fill the Level 1 section divider lines."
+                },
+                "divider.text.level2": {
+                    "type": "string",
+                    "default": "-",
+                    "description": "Text that will be used to fill the Level 2 section divider lines."
                 },
                 "divider.endColumn": {
                     "type": "number",
