@@ -8,14 +8,18 @@ This extension inserts horizontal section dividers using language comments.
 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
-| Divider: Add From Cursor| Alt+D | insert a divider with the configured number of lines from cursor position up to the configured end column|
+| Divider: Add Divider - Level 1| Alt+D | insert a level 1 divider with the configured number of lines from cursor position up to the configured end column|
+| Divider: Add Divider - Level 2| Ctrl+Alt+D | insert a level 2 divider with the configured number of lines from cursor position up to the configured end column|
 
 
 # Configuration
 
 ```javascript
-// Text that will be used to fill the section divider lines.
-"divider.text": "=",
+// Text that will be used to fill the level 1 section divider lines.
+"divider.text.level1": "=",
+
+// Text that will be used to fill the level 2 section divider lines.
+"divider.text.level2": "-",
 
 // Last character column the section divider will reach.
 "divider.endColumn": 80,

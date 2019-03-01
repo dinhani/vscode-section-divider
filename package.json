@@ -3,7 +3,7 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "1.2.1",
+    "version": "2.0.0",
     "license": "MIT",
     "repository": "https://github.com/dinhani/vscode-section-divider",
     "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
@@ -49,12 +49,12 @@
                 "divider.text.level1": {
                     "type": "string",
                     "default": "=",
-                    "description": "Text that will be used to fill the Level 1 section divider lines."
+                    "description": "Text that will be used to fill the level 1 section divider lines."
                 },
                 "divider.text.level2": {
                     "type": "string",
                     "default": "-",
-                    "description": "Text that will be used to fill the Level 2 section divider lines."
+                    "description": "Text that will be used to fill the level 2 section divider lines."
                 },
                 "divider.endColumn": {
                     "type": "number",
