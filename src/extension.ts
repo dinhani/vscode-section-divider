@@ -9,15 +9,19 @@ import { IndentationRenderer } from "./renderers/indentationRenderer";
 // ============================================================================
 export function activate(context: vscode.ExtensionContext): void {
 
-    // FROM CURSOR
-    const fromCursor = vscode.commands.registerCommand("divider.addFromCursor", () => {
-        // prepare selection
+    // ADD DIVIDER - LEVEL 1
+    const addDividerLevel1 = vscode.commands.registerCommand("divider.addDividerLevel1", () => {
         const currentSelection = vscode.window.activeTextEditor.selection;
-
-        // insert
-        insertDivider(currentSelection);
+        insertDivider(currentSelection, 1);
     });
-    context.subscriptions.push(fromCursor);
+    context.subscriptions.push(addDividerLevel1);
+
+    // ADD DIVIDER - LEVEL 2
+    const addDividerLevel2 = vscode.commands.registerCommand("divider.addDividerLevel2", () => {
+        const currentSelection = vscode.window.activeTextEditor.selection;
+        insertDivider(currentSelection, 2);
+    });
+    context.subscriptions.push(addDividerLevel2);
 }
 
 export function deactivate(): void {
@@ -27,11 +31,11 @@ export function deactivate(): void {
 // =============================================================================
 // INSERT DIVIDER ENTRY POINT
 // =============================================================================
-function insertDivider(selection: vscode.Selection, numberOfLines?: number): void {
+function insertDivider(selection: vscode.Selection, level: number, numberOfLines?: number): void {
     // read config
     const config = vscode.workspace.getConfiguration("divider");
     const configEndColumn = config.get("endColumn", 80);
-    const configText = config.get("text", "=");
+    const configText = config.get(`text.level${level}`, "=");
     let configNumberOfLines = config.get("lines", 3);
     if (numberOfLines) {
         configNumberOfLines = numberOfLines;
