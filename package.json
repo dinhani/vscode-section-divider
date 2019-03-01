@@ -15,9 +15,7 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onCommand:divider.addFromCursor",
-        "onCommand:divider.addFromCursorWithOneLine",
-        "onCommand:divider.addFromLineStart"
+        "onCommand:divider.addFromCursor"
     ],
     "main": "./out/src/extension",
     "contributes": {
