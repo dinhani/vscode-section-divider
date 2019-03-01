@@ -40,11 +40,6 @@
                 "command": "divider.addFromCursor",
                 "key": "alt+d",
                 "when": "editorTextFocus"
-            },
-            {
-                "command": "divider.addFromCursorWithOneLine",
-                "key": "ctrl+alt+d",
-                "when": "editorTextFocus"
             }
         ],
         "configuration": {

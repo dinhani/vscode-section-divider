@@ -18,28 +18,6 @@ export function activate(context: vscode.ExtensionContext): void {
         insertDivider(currentSelection);
     });
     context.subscriptions.push(fromCursor);
-
-    // FROM CURSOR WITH ONE LINE
-    const fromCursorWithOneLine = vscode.commands.registerCommand("divider.addFromCursorWithOneLine", () => {
-        // prepare selection
-        const currentSelection = vscode.window.activeTextEditor.selection;
-
-        // insert
-        insertDivider(currentSelection, 1);
-    });
-    context.subscriptions.push(fromCursor);
-
-    // FROM LINE START
-    const fromLineStart = vscode.commands.registerCommand("divider.addFromLineStart", () => {
-        // prepare selection
-        const currentSelection = vscode.window.activeTextEditor.selection;
-        const startPositionAtStartOfLine = new vscode.Position(currentSelection.start.line, 0);
-        const selectionAtStartOfLine = new vscode.Selection(startPositionAtStartOfLine, currentSelection.end);
-
-        // insert
-        insertDivider(selectionAtStartOfLine);
-    });
-    context.subscriptions.push(fromLineStart);
 }
 
 export function deactivate(): void {
