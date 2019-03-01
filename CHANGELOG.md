@@ -1,5 +1,12 @@
 # Change Log
 
+
+**2.0.0:** Added primary (level 1) and secondary (level 2) section dividers support.
+
+Also removed previous existing functionalities of "adding a one line divider" and "adding a divider from the line start instead of cursor position" because I have never used them.
+
+---
+
 **1.2.1:** Bugfix in tab support implementation
 
 **1.2.0:** Tab support
