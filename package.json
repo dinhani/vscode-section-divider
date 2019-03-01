@@ -25,14 +25,6 @@
             {
                 "command": "divider.addFromCursor",
                 "title": "Divider: Add From Cursor"
-            },
-            {
-                "command": "divider.addFromCursorWithOneLine",
-                "title": "Divider: Add From Cursor With One Line"
-            },
-            {
-                "command": "divider.addFromLineStart",
-                "title": "Divider: Add From Line Start"
             }
         ],
         "keybindings": [
