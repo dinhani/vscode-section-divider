@@ -10,6 +10,8 @@ This extension inserts horizontal section dividers using language comments.
 |---------|----------|-------------|
 | Divider: Add Divider - Level 1| Alt+D | insert a level 1 divider with the configured number of lines from cursor position up to the configured end column|
 | Divider: Add Divider - Level 2| Ctrl+Alt+D | insert a level 2 divider with the configured number of lines from cursor position up to the configured end column|
+| Divider: Add Divider - Level 1 - One Line| | insert a level 1 divider with only 1 line from cursor position up to the configured end column|
+| Divider: Add Divider - Level 2 - One Line| | insert a level 2 divider with only 1 line from cursor position up to the configured end column|
 
 
 # Configuration
