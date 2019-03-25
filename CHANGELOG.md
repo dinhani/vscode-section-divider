@@ -1,5 +1,6 @@
 # Change Log
 
+**2.1.0:** Restored functionality to add "one line divider", but now with primary (level 1) and secondary (level 2) support.
 
 **2.0.0:** Added primary (level 1) and secondary (level 2) section dividers support.
 

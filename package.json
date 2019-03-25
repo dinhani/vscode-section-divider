@@ -3,7 +3,7 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "license": "MIT",
     "repository": "https://github.com/dinhani/vscode-section-divider",
     "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
@@ -28,6 +28,14 @@
             {
                 "command": "divider.addDividerLevel2",
                 "title": "Divider: Add Divider - Level 2"
+            },
+            {
+                "command": "divider.addDividerLevel1WithOneLine",
+                "title": "Divider: Add Divider - Level 1 - One Line"
+            },
+            {
+                "command": "divider.addDividerLevel2WithOneLine",
+                "title": "Divider: Add Divider - Level 2 - One Line"
             }
         ],
         "keybindings": [
