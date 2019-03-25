@@ -23,14 +23,14 @@ export function activate(context: vscode.ExtensionContext): void {
     });
     context.subscriptions.push(addDividerLevel2);
 
-    // ADD SINGLE LINE DIVIDER - LEVEL 1
+    // ADDDIVIDER - LEVEL 1 - ONE LINE
     const addDividerLevel1WithOneLine = vscode.commands.registerCommand("divider.addDividerLevel1WithOneLine", () => {
         const currentSelection = vscode.window.activeTextEditor.selection;
         insertDivider(currentSelection, 1, 1);
     });
     context.subscriptions.push(addDividerLevel1WithOneLine);
 
-    // ADD SINGLE LINE DIVIDER - LEVEL 2
+    // ADD DIVIDER - LEVEL 2 - ONE LINE
     const addDividerLevel2WithOneLine = vscode.commands.registerCommand("divider.addDividerLevel2WithOneLine", () => {
         const currentSelection = vscode.window.activeTextEditor.selection;
         insertDivider(currentSelection, 2, 1);
