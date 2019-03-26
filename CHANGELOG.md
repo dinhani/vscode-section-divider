@@ -1,5 +1,9 @@
 # Change Log
 
+**2.2.0:** Shortened command names to `Add H1 Divider` pattern to bring resemblance with HTML headers.
+
+---
+
 **2.1.0:** Restored functionality to add "one line divider", but now with primary (level 1) and secondary (level 2) support.
 
 ---

@@ -8,19 +8,19 @@ This extension inserts horizontal section dividers using language comments.
 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
-| Divider: Add Divider - Level 1| Alt+D | insert a level 1 divider with the configured number of lines from cursor position up to the configured end column|
-| Divider: Add Divider - Level 2| Ctrl+Alt+D | insert a level 2 divider with the configured number of lines from cursor position up to the configured end column|
-| Divider: Add Divider - Level 1 - One Line| | insert a level 1 divider with only 1 line from cursor position up to the configured end column|
-| Divider: Add Divider - Level 2 - One Line| | insert a level 2 divider with only 1 line from cursor position up to the configured end column|
+| Divider: Add H1 Divider| Alt+D | insert a level 1 divider with the configured number of lines|
+| Divider: Add H2 Divider| Ctrl+Alt+D | insert a level 2 divider with the configured number of lines|
+| Divider: Add H1 Divider - One Line| | insert a level 1 divider with only one line|
+| Divider: Add H2 Divider - One Line| | insert a level 2 divider with only one line|
 
 
 # Configuration
 
 ```javascript
-// Text that will be used to fill the level 1 section divider lines.
+// Text that will be used to fill the level 1 (H1) section divider lines.
 "divider.text.level1": "=",
 
-// Text that will be used to fill the level 2 section divider lines.
+// Text that will be used to fill the level 2 (H2) section divider lines.
 "divider.text.level2": "-",
 
 // Last character column the section divider will reach.
