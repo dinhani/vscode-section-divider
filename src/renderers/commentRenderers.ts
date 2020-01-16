@@ -113,6 +113,7 @@ export class CommentRendererFactory {
             case "r":
             case "ruby":
             case "shellscript":
+            case "tcl":
             case "yaml":
                 return new LineCommentRenderer("#");
             // --
