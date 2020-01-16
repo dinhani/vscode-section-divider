@@ -1,5 +1,7 @@
 # Change Log
 
+**2.2.1:** TCL support
+
 **2.2.0:** Shortened command names to `Add H1 Divider` pattern to bring resemblance with HTML headers.
 
 ---
@@ -20,19 +22,19 @@ Also removed previous existing functionalities of "adding a one line divider" an
 
 ---
 
-**1.1.7:** ERB supported
+**1.1.7:** ERB support
 
-**1.1.6:** Gemfile supported
+**1.1.6:** Gemfile support
 
-**1.1.5:** HTML (Elixir) supported
+**1.1.5:** HTML (Elixir) support
 
 **1.1.4:** AutoHotkey suppported
 
-**1.1.3:** Vue supported
+**1.1.3:** Vue support
 
-**1.1.2:** Shellscript supported
+**1.1.2:** Shellscript support
 
-**1.1.1:** More languages supported
+**1.1.1:** More languages support
 
 **1.1.0:** Added `Divider: Add From Cursor With One Line` and fixed cursor position after divider is inserted
 
@@ -44,9 +46,9 @@ Also removed previous existing functionalities of "adding a one line divider" an
 
 **0.0.9:** Fixed a off-by-one error when generating the divider
 
-**0.0.8:** More languages supported
+**0.0.8:** More languages support
 
-**0.0.7:** More languages supported
+**0.0.7:** More languages support
 
 **0.0.6:** Automatically sets the cursor inside the divider and also replace the selected content when the divider is added
 
