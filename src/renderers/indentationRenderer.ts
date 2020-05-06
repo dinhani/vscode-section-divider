@@ -1,6 +1,6 @@
 export class IndentationRenderer {
 
-    render(indentationText: string, editorTabSize: number): IndentationRendered {
+    render(indentationText: string, tabWidth: number): IndentationRendered {
         const text = indentationText
             .split("")
             .map(c => c === "\t" ? "\t" : " ")
@@ -8,7 +8,7 @@ export class IndentationRenderer {
 
         const whitespaceWidth = text
             .split("")
-            .map(c => c === "\t" ? editorTabSize : 1)
+            .map(c => c === "\t" ? tabWidth : 1)
             .reduce((total, n) => total + n, 0);
 
         return {

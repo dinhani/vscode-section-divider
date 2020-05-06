@@ -46,10 +46,6 @@ export function deactivate(): void {
 // INSERT DIVIDER ENTRY POINT
 // =============================================================================
 function insertDivider(selection: vscode.Selection, level: number, numberOfLines?: number): void {
-    // read editor config
-    const editorConfig = vscode.workspace.getConfiguration("editor");
-    const editorTabSize = editorConfig.get("tabSize", 4);
-
     // read divider config
     const dividerConfig = vscode.workspace.getConfiguration("divider");
     const dividerEndColumn = dividerConfig.get("endColumn", 80);
@@ -59,7 +55,8 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     // configure identation
     const indentationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
     const indentationSelectionText = vscode.window.activeTextEditor.document.getText(indentationSelection);
-    const indentation = new IndentationRenderer().render(indentationSelectionText, editorTabSize);
+    const indentationTabWidth = vscode.window.activeTextEditor.options.tabSize as number;
+    const indentation = new IndentationRenderer().render(indentationSelectionText, indentationTabWidth);
 
     // configure divider renderer
     const commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId);
