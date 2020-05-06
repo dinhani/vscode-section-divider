@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext): void {
     });
     context.subscriptions.push(addDividerLevel2);
 
-    // ADDDIVIDER - LEVEL 1 - ONE LINE
+    // ADD DIVIDER - LEVEL 1 - ONE LINE
     const addDividerLevel1WithOneLine = vscode.commands.registerCommand("divider.addDividerLevel1WithOneLine", () => {
         const currentSelection = vscode.window.activeTextEditor.selection;
         insertDivider(currentSelection, 1, 1);
@@ -46,27 +46,28 @@ export function deactivate(): void {
 // INSERT DIVIDER ENTRY POINT
 // =============================================================================
 function insertDivider(selection: vscode.Selection, level: number, numberOfLines?: number): void {
-    // read config
-    const config = vscode.workspace.getConfiguration("divider");
-    const configEndColumn = config.get("endColumn", 80);
-    const configText = config.get(`text.level${level}`, "=");
-    let configNumberOfLines = config.get("lines", 3);
-    if (numberOfLines) {
-        configNumberOfLines = numberOfLines;
-    }
+    // read editor config
+    const editorConfig = vscode.workspace.getConfiguration("editor");
+    const editorTabSize = editorConfig.get("tabSize", 4);
+
+    // read divider config
+    const dividerConfig = vscode.workspace.getConfiguration("divider");
+    const dividerEndColumn = dividerConfig.get("endColumn", 80);
+    const dividerText = dividerConfig.get(`text.level${level}`, "=");
+    const dividerNumberOfLines = numberOfLines || dividerConfig.get("lines", 3);
 
     // configure identation
-    const indentationRenderer = new IndentationRenderer();
     const indentationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
     const indentationSelectionText = vscode.window.activeTextEditor.document.getText(indentationSelection);
-    const indentation = indentationRenderer.render(indentationSelectionText);
+    const indentation = new IndentationRenderer().render(indentationSelectionText, editorTabSize);
 
     // configure divider renderer
     const commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId);
-    const dividerRenderer = new DividerRenderer(commentRenderer, configNumberOfLines, indentation);
+    const dividerRenderer = new DividerRenderer(commentRenderer, dividerNumberOfLines, indentation.text);
 
     // render divider
-    const divider = dividerRenderer.render(selection.start.character, configEndColumn, configText);
+    const dividerStartColumn = indentation.whitespaceWidth;
+    const divider = dividerRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
 
     // insert divider
     const editor = vscode.window.activeTextEditor;
@@ -75,7 +76,7 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     // position the cursor inside or after the divider
     const lineToSetCursor = selection.start.line + (dividerRenderer.getLineToSerCursor() - 1);
     let positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character);
-    if (configNumberOfLines >= 3) {
+    if (dividerNumberOfLines >= 3) {
         positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + commentRenderer.startCommentText.length + 1);
     }
     const selectionToSetCursor = new vscode.Selection(positionToSetCursor, positionToSetCursor);

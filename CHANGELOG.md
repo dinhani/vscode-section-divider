@@ -1,5 +1,9 @@
 # Change Log
 
+**2.3.0:** Fixed issue where dividers generated with tab indentation did not respect the end column properly.
+
+---
+
 **2.2.1:** TCL support
 
 **2.2.0:** Shortened command names to `Add H1 Divider` pattern to bring resemblance with HTML headers.
