@@ -3,7 +3,7 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "2.2.1",
+    "version": "2.3.0",
     "license": "MIT",
     "repository": "https://github.com/dinhani/vscode-section-divider",
     "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
