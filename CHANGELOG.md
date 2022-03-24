@@ -1,5 +1,7 @@
 # Change Log
 
+**2.3.2:** TOML support
+
 **2.3.1:** Use active document tab-width instead of editor tab-width config.
 
 **2.3.0:** Fixed issue where dividers generated with tab indentation did not respect the end column properly.
