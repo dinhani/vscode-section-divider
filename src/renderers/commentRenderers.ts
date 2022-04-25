@@ -99,6 +99,7 @@ export class CommentRendererFactory {
             // #
             case "coffeescript":
             case "crystal":
+            case "dockercompose":
             case "dockerfile":
             case "elixir":
             case "gemfile":

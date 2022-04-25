@@ -1,5 +1,7 @@
 # Change Log
 
+**2.3.3:** Docker Compose support
+
 **2.3.2:** TOML support
 
 **2.3.1:** Use active document tab-width instead of editor tab-width config.
