@@ -58,7 +58,7 @@ export class BlockCommentRenderer extends CommentRenderer {
 // =============================================================================
 export class CommentRendererFactory {
 
-    static create(language: string): CommentRenderer {
+    static create(language: string, overrides: object): CommentRenderer {
         // check no language parameter present
         if (!language) {
             return new LineCommentRenderer("//");
@@ -66,6 +66,18 @@ export class CommentRendererFactory {
 
         // prepare language parameter
         const languageNormalized = language.toLowerCase().trim();
+
+        // check language custom configuration
+        const languageOverrides = overrides[languageNormalized];
+        if (typeof languageOverrides === "string") {
+            return new LineCommentRenderer(languageOverrides);
+        }
+        if (Array.isArray(languageOverrides) && languageOverrides.length == 1) {
+            return new LineCommentRenderer(languageOverrides[0]);
+        }
+        if (Array.isArray(languageOverrides) && languageOverrides.length >= 2) {
+            return new BlockCommentRenderer(languageOverrides[0], languageOverrides[1]);
+        }
 
         // check language
         switch (languageNormalized) {

@@ -51,6 +51,7 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     const dividerEndColumn = dividerConfig.get("endColumn", 80);
     const dividerText = dividerConfig.get(`text.level${level}`, "=");
     const dividerNumberOfLines = numberOfLines || dividerConfig.get("lines", 3);
+    const dividerOverrides = dividerConfig.get("languages", {});
 
     // configure identation
     const indentationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
@@ -59,7 +60,7 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     const indentation = new IndentationRenderer().render(indentationSelectionText, indentationTabWidth);
 
     // configure divider renderer
-    const commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId);
+    const commentRenderer = CommentRendererFactory.create(vscode.window.activeTextEditor.document.languageId, dividerOverrides);
     const dividerRenderer = new DividerRenderer(commentRenderer, dividerNumberOfLines, indentation.text);
 
     // render divider
