@@ -3,7 +3,7 @@
     "displayName": "Section Divider",
     "description": "Inserts horizontal section dividers using language comments.",
     "publisher": "dinhani",
-    "version": "2.3.3",
+    "version": "2.4.0",
     "license": "MIT",
     "repository": "https://github.com/dinhani/vscode-section-divider",
     "bugs": "https://github.com/dinhani/vscode-section-divider/issues",
@@ -73,6 +73,11 @@
                     "type": "number",
                     "default": 3,
                     "description": "Number of lines the section divider will have."
+                },
+                "divider.overrides": {
+                    "type": "object",
+                    "default": {},
+                    "description": "Overrides language default comment characters with custom characters."
                 }
             }
         }
