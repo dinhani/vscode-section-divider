@@ -1,5 +1,9 @@
 # Change Log
 
+**2.4.0:** Configuration to override language default comment characters with custom characters.
+
+---
+
 **2.3.3:** Docker Compose support
 
 **2.3.2:** TOML support
