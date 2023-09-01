@@ -72,7 +72,7 @@ export class CommentRendererFactory {
         if (typeof languageOverrides === "string") {
             return new LineCommentRenderer(languageOverrides);
         }
-        if (Array.isArray(languageOverrides) && languageOverrides.length == 1) {
+        if (Array.isArray(languageOverrides) && languageOverrides.length === 1) {
             return new LineCommentRenderer(languageOverrides[0]);
         }
         if (Array.isArray(languageOverrides) && languageOverrides.length >= 2) {

@@ -14,7 +14,7 @@ export class IndentationRenderer {
         return {
             text: text,
             whitespaceWidth: whitespaceWidth
-        }
+        };
     }
 }
 
