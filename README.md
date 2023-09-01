@@ -30,10 +30,9 @@ This extension inserts horizontal section dividers using language comments.
 "divider.lines": 3
 
 // Overrides language default comment characters with custom characters.
-"divider.overrides.<language_id>": ["/*", "*/"]
-"divider.overrides.stata": ["/*", "*/"]
-"divider.overrides.stata": ["//"]
-"divider.overrides.stata": "*"
+"divider.overrides {
+    "java": ["/*", "*/"]
+}
 ```
 
 # Feedback
