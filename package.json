@@ -95,6 +95,6 @@
         "tslint": "^5.12.1",
         "tslint-microsoft-contrib": "^6.0.0",
         "typescript": "3.2.4",
-        "vscode": "^1.1.27"
+        "vscode": "^1.1.37"
     }
 }
