@@ -51,7 +51,7 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     const dividerEndColumn = dividerConfig.get("endColumn", 80);
     const dividerText = dividerConfig.get(`text.level${level}`, "=");
     const dividerNumberOfLines = numberOfLines || dividerConfig.get("lines", 3);
-    const dividerOverrides = dividerConfig.get("languages", {});
+    const dividerOverrides = dividerConfig.get("overrides", {});
 
     // configure identation
     const indentationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
