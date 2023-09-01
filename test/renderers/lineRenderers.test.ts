@@ -8,13 +8,13 @@ suite("Line Renderers", () => {
     test("LineCommentRenderer render", () => {
         const fullLineRenderer = new FullLineRenderer(commentRenderer);
         const comment = fullLineRenderer.render(0, 80, "=");
-        assert.equal(comment, "// =============================================================================");
-        assert.equal(comment.length, 80);
+        assert.strictEqual(comment, "// =============================================================================");
+        assert.strictEqual(comment.length, 80);
     });
     test("BlockCommentRenderer render", () => {
         const emptyLineRenderer = new EmptyLineRenderer(commentRenderer);
         const comment = emptyLineRenderer.render(0, 80, "=");
-        assert.equal(comment, "// ");
-        assert.equal(comment.length, 3);
+        assert.strictEqual(comment, "// ");
+        assert.strictEqual(comment.length, 3);
     });
 });
