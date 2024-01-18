@@ -2,7 +2,7 @@
 
 This extension inserts horizontal section dividers using language comments.
 
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true#review-details)
 [![Version](https://img.shields.io/visual-studio-marketplace/v/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true#version-history)
 
