@@ -9,6 +9,7 @@ This extension inserts horizontal section dividers using language comments.
 ## Example
 
 ![Section Divider example](https://raw.githubusercontent.com/dinhani/vscode-section-divider/master/images/vscode-divider-example.gif)
+*Divider being added from the cursor position until the limit ruler.*
 
 
 ## Usage
