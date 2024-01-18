@@ -2,9 +2,16 @@
 
 This extension inserts horizontal section dividers using language comments.
 
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true#review-details)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/dinhani.divider?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=dinhani.divider&ssr=true#version-history)
+
+## Example
+
 ![Section Divider example](https://raw.githubusercontent.com/dinhani/vscode-section-divider/master/images/vscode-divider-example.gif)
 
-# Usage
+
+## Usage
 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
@@ -14,7 +21,7 @@ This extension inserts horizontal section dividers using language comments.
 | Divider: Add H2 Divider - One Line| | insert a level 2 divider with only one line|
 
 
-# Configuration
+## Configuration
 
 ```javascript
 // Text that will be used to fill the level 1 (H1) section divider lines.
@@ -35,6 +42,6 @@ This extension inserts horizontal section dividers using language comments.
 }
 ```
 
-# Feedback
+## Feedback
 
 Request features and report bugs using [GitHub](https://github.com/dinhani/vscode-section-divider).
