@@ -1,6 +1,7 @@
 # Change Log
 
-**2.4.1:** Retry
+**2.4.1:** Re-deploy
+
 **2.4.0:** Configuration to override language default comment characters with custom characters.
 
 ---
