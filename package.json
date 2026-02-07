@@ -16,7 +16,8 @@
     ],
     "activationEvents": [
         "onCommand:divider.addDividerLevel1",
-        "onCommand:divider.addDividerLevel2"
+        "onCommand:divider.addDividerLevel2",
+        "onCommand:divider.addDividerLevel3"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -30,12 +31,20 @@
                 "title": "Divider: Add H2 Divider"
             },
             {
+                "command": "divider.addDividerLevel3",
+                "title": "Divider: Add H3 Divider"
+            },
+            {
                 "command": "divider.addDividerLevel1WithOneLine",
                 "title": "Divider: Add H1 Divider - One Line"
             },
             {
                 "command": "divider.addDividerLevel2WithOneLine",
                 "title": "Divider: Add H2 Divider - One Line"
+            },
+            {
+                "command": "divider.addDividerLevel3WithOneLine",
+                "title": "Divider: Add H3 Divider - One Line"
             }
         ],
         "keybindings": [
@@ -63,6 +72,11 @@
                     "type": "string",
                     "default": "-",
                     "description": "Text that will be used to fill the level 2 (H2) section divider lines."
+                },
+                "divider.text.level3": {
+                    "type": "string",
+                    "default": ".",
+                    "description": "Text that will be used to fill the level 3 (H3) section divider lines."
                 },
                 "divider.endColumn": {
                     "type": "number",
