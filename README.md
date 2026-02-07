@@ -31,6 +31,9 @@ This extension inserts horizontal section dividers using language comments.
 // Text that will be used to fill the level 2 (H2) section divider lines.
 "divider.text.level2": "-",
 
+// Text that will be used to fill the level 3 (H3) section divider lines.
+"divider.text.level3": ".",
+
 // Last character column the section divider will reach.
 "divider.endColumn": 80,
 

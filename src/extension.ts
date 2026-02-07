@@ -23,6 +23,13 @@ export function activate(context: vscode.ExtensionContext): void {
     });
     context.subscriptions.push(addDividerLevel2);
 
+    // ADD DIVIDER - LEVEL 3
+    const addDividerLevel3 = vscode.commands.registerCommand("divider.addDividerLevel3", () => {
+        const currentSelection = vscode.window.activeTextEditor.selection;
+        insertDivider(currentSelection, 3);
+    });
+    context.subscriptions.push(addDividerLevel3);
+
     // ADD DIVIDER - LEVEL 1 - ONE LINE
     const addDividerLevel1WithOneLine = vscode.commands.registerCommand("divider.addDividerLevel1WithOneLine", () => {
         const currentSelection = vscode.window.activeTextEditor.selection;
@@ -36,6 +43,13 @@ export function activate(context: vscode.ExtensionContext): void {
         insertDivider(currentSelection, 2, 1);
     });
     context.subscriptions.push(addDividerLevel2WithOneLine);
+
+    // ADD DIVIDER - LEVEL 3 - ONE LINE
+    const addDividerLevel3WithOneLine = vscode.commands.registerCommand("divider.addDividerLevel3WithOneLine", () => {
+        const currentSelection = vscode.window.activeTextEditor.selection;
+        insertDivider(currentSelection, 3, 1);
+    });
+    context.subscriptions.push(addDividerLevel3WithOneLine);
 }
 
 export function deactivate(): void {
