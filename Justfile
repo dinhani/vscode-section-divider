@@ -36,6 +36,12 @@ package:
     npm run compile
     npx vsce package
 
+# Publish extension to VSCode Marketplace
+[group('release')]
+publish: package
+    @echo "Publishing extension..."
+    npx vsce publish
+
 # Install extension in VSCode
 [group('release')]
 install: package
