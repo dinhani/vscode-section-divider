@@ -1,5 +1,9 @@
 # Change Log
 
+**2.5.0:** Added H3 (level 3) section divider with dot (`.`) as default fill character.
+
+---
+
 **2.4.2:** Added support for 35+ new programming languages including Zig, Nim, OCaml, Svelte, Solidity, Terraform, and many more.
 
 ---
