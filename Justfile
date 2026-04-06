@@ -4,17 +4,16 @@ default:
 
 # Run extension in VSCode
 [group('dev')]
-run:
+run: clean
     @echo "Running extension in VSCode..."
-    rm -rf out
     npm run compile
     code --extensionDevelopmentPath={{justfile_directory()}}
 
-# Watch for changes
+# Remove generated artifacts
 [group('dev')]
-watch:
-    @echo "Watching for changes..."
-    npm run watch
+clean:
+    @echo "Cleaning..."
+    rm -rf out .vscode-test *.vsix
 
 # Run tests
 [group('quality')]
@@ -30,9 +29,8 @@ lint:
 
 # Package extension as .vsix
 [group('release')]
-package:
+package: clean
     @echo "Packaging extension..."
-    rm -rf out *.vsix
     npm run compile
     npx vsce package
 
