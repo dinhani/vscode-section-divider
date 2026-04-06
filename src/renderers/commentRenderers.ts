@@ -82,68 +82,104 @@ export class CommentRendererFactory {
         // check language
         switch (languageNormalized) {
             // //
+            case "apex":
             case "c":
+            case "carbon":
             case "ceylon":
             case "cpp":
             case "csharp":
+            case "cuda":
             case "d":
             case "dart":
             case "fsharp":
+            case "gleam":
+            case "glsl":
             case "go":
             case "groovy":
             case "haxe":
+            case "hlsl":
             case "java":
             case "javascript":
+            case "javascriptreact":
+            case "jsonc":
             case "kotlin":
             case "objective-c":
+            case "objective-cpp":
+            case "odin":
             case "pascal":
             case "php":
+            case "proto":
+            case "proto3":
+            case "reason":
             case "rust":
             case "scala":
+            case "solidity":
             case "stylus":
             case "swift":
             case "typescript":
+            case "typescriptreact":
+            case "v":
+            case "zig":
                 return new LineCommentRenderer("//");
             // //-
             case "jade":
             case "pug":
                 return new LineCommentRenderer("//-");
             // #
+            case "cmake":
             case "coffeescript":
             case "crystal":
             case "dockercompose":
             case "dockerfile":
             case "elixir":
+            case "fish":
             case "gemfile":
             case "graphql":
+            case "hcl":
+            case "ini":
             case "julia":
+            case "just":
             case "makefile":
+            case "mojo":
+            case "nim":
+            case "nix":
             case "perl":
             case "perl6":
             case "powershell":
             case "properties":
+            case "puppet":
             case "python":
             case "r":
+            case "raku":
             case "ruby":
             case "shellscript":
+            case "starlark":
             case "tcl":
+            case "terraform":
             case "toml":
             case "yaml":
                 return new LineCommentRenderer("#");
             // --
             case "ada":
+            case "applescript":
             case "elm":
             case "haskell":
             case "lua":
+            case "plpgsql":
             case "sql":
+            case "vhdl":
                 return new LineCommentRenderer("--");
             // ;
             case "ahk":
+            case "asm":
+            case "nasm":
                 return new LineCommentRenderer(";");
             // ;;
             case "clojure":
+            case "fennel":
             case "lisp":
             case "racket":
+            case "scheme":
                 return new LineCommentRenderer(";;");
             // '
             case "vb":
@@ -155,6 +191,8 @@ export class CommentRendererFactory {
             case "erlang":
             case "latex":
             case "matlab":
+            case "postscript":
+            case "prolog":
                 return new LineCommentRenderer("%");
             // \
             case "forth":
@@ -176,14 +214,20 @@ export class CommentRendererFactory {
             // <!-- -->
             case "coldfusion":
             case "erb":
+            case "handlebars":
             case "html":
             case "html (eex)":
+            case "jinja":
             case "markdown":
+            case "razor":
+            case "svelte":
+            case "twig":
             case "vue":
             case "xml":
             case "xsl":
                 return new BlockCommentRenderer("<!--", "-->");
             case "mathematica":
+            case "ocaml":
             case "wolfram":
                 return new BlockCommentRenderer("(*", "*)");
             default:

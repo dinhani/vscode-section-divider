@@ -1,5 +1,9 @@
 # Change Log
 
+**2.4.2:** Added support for 35+ new programming languages including Zig, Nim, OCaml, Svelte, Solidity, Terraform, and many more.
+
+---
+
 **2.4.1:** Re-deploy
 
 **2.4.0:** Configuration to override language default comment characters with custom characters.
