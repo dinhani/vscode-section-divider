@@ -36,9 +36,16 @@ package: clean
 
 # Publish extension to VSCode Marketplace
 [group('release')]
-publish: package
-    @echo "Publishing extension..."
+publish-vscode: package
+    @echo "Publishing extension to VSCode Marketplace..."
     npx vsce publish
+
+# Publish extension to Open VSX
+[group('release')]
+publish-openvsx: package
+    @echo "Publishing extension to Open VSX..."
+    npx ovsx publish *.vsix
+
 
 # Install extension in VSCode
 [group('release')]
