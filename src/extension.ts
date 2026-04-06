@@ -67,7 +67,7 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     const dividerNumberOfLines = numberOfLines || dividerConfig.get("lines", 3);
     const dividerOverrides = dividerConfig.get("overrides", {});
 
-    // configure identation
+    // configure indentation
     const indentationSelection = new vscode.Selection(selection.end.line, 0, selection.end.line, selection.start.character);
     const indentationSelectionText = vscode.window.activeTextEditor.document.getText(indentationSelection);
     const indentationTabWidth = vscode.window.activeTextEditor.options.tabSize as number;
@@ -86,7 +86,7 @@ function insertDivider(selection: vscode.Selection, level: number, numberOfLines
     editor.edit(edit => edit.replace(selection, divider));
 
     // position the cursor inside or after the divider
-    const lineToSetCursor = selection.start.line + (dividerRenderer.getLineToSerCursor() - 1);
+    const lineToSetCursor = selection.start.line + (dividerRenderer.getLineToSetCursor() - 1);
     let positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character);
     if (dividerNumberOfLines >= 3) {
         positionToSetCursor = new vscode.Position(lineToSetCursor, selection.start.character + commentRenderer.startCommentText.length + 1);

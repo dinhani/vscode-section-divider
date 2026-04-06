@@ -5,18 +5,18 @@ export class DividerRenderer {
 
     // SERVICES
     private readonly blockRenderer: BlockRenderer;
-    private readonly identation: string;
+    private readonly indentation: string;
 
     // CONSTRUCTOR
-    constructor(commentRenderer: CommentRenderer, numberOfLines: number, identation: string) {
+    constructor(commentRenderer: CommentRenderer, numberOfLines: number, indentation: string) {
         this.blockRenderer = BlockRendererFactory.create(numberOfLines, commentRenderer);
-        this.identation = identation;
+        this.indentation = indentation;
     }
 
     // =========================================================================
     // GETTERS
     // =========================================================================
-    getLineToSerCursor(): number {
+    getLineToSetCursor(): number {
         return this.blockRenderer.getLineToSetCursor();
     }
 
@@ -27,33 +27,33 @@ export class DividerRenderer {
         // render divider
         let divider = this.blockRenderer.render(dividerStartColumn, dividerEndColumn, dividerText);
 
-        // add necessary identation to the left
-        let dividerWithIdentation = this.addIdentationSpace(divider, dividerStartColumn);
+        // add necessary indentation to the left
+        let dividerWithIndentation = this.addIndentationSpace(divider, dividerStartColumn);
 
-        return dividerWithIdentation;
+        return dividerWithIndentation;
     }
 
-    private addIdentationSpace(divider: string, dividerStartColumn: number): string {
+    private addIndentationSpace(divider: string, dividerStartColumn: number): string {
         // split lines to append whitespace and set line-breaks according to editor
         const lines = divider.split("\n");
 
-        let dividerWithIdentation = "";
+        let dividerWithIndentation = "";
         for (let index = 0; index < lines.length; index++) {
             let line = lines[index];
 
             // append whitespace if not first line
             if (index !== 0) {
-                line = this.identation + line;
+                line = this.indentation + line;
             }
 
             // append line to the new divider
-            dividerWithIdentation += line;
+            dividerWithIndentation += line;
 
             // append line-break if not last line
             if (index !== lines.length - 1) {
-                dividerWithIdentation += "\n";
+                dividerWithIndentation += "\n";
             }
         }
-        return dividerWithIdentation;
+        return dividerWithIndentation;
     }
 }
