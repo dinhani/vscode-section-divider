@@ -58,7 +58,7 @@ export class BlockCommentRenderer extends CommentRenderer {
 // =============================================================================
 export class CommentRendererFactory {
 
-    static create(language: string, overrides: object): CommentRenderer {
+    static create(language: string | undefined, overrides: Record<string, unknown>): CommentRenderer {
         // check no language parameter present
         if (!language) {
             return new LineCommentRenderer("//");

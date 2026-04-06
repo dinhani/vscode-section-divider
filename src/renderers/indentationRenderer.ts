@@ -18,7 +18,7 @@ export class IndentationRenderer {
     }
 }
 
-export class IndentationRendered {
+export interface IndentationRendered {
     text: string;
     whitespaceWidth: number;
 }
